@@ -6,4 +6,5 @@ Thank you from the bottom of my heart.
 In the future,I will be a front-end engineer.Probably in a year or three.
 
 ## Progress
+- git handson
 - js-lesson1
