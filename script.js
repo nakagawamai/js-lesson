@@ -1,2 +1,2 @@
-var targetElements = document.getElementsByTagName('ul');
-targetElements[0].insertAdjacentHTML('afterbegin','<li>これです</li>');
+var targetElements = document.getElementById('list');
+targetElements.insertAdjacentHTML('afterbegin','<li>これです</li>');
