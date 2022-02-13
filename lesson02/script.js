@@ -9,4 +9,4 @@ img.src = 'bookmark.png';
 img.alt = 'ブックマーク';
 
 const ul = document.getElementById('js-list');
-ul.appendChild(li).appendChild(a).prepend(img);
+ul.appendChild(li).appendChild(a).insertAdjacentElement( 'afterbegin', img ) ;
