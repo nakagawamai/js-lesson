@@ -8,5 +8,5 @@ const img = document.createElement('img');
 img.src = 'bookmark.png';
 img.alt = 'ブックマーク';
 
-const ul = document.getElementById('list');
+const ul = document.getElementById('js-list');
 ul.appendChild(li).appendChild(a).prepend(img);
