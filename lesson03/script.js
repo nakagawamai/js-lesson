@@ -13,7 +13,7 @@ for (let i= 0; i < imgSrc.length; i++){
     const img = document.createElement('img');
     img.src = imgSrc[i];
 
-    fragment.appendChild(li).appendChild(a).insertBefore(img,a.firstChild);
+    fragment.appendChild(li).appendChild(a).insertAdjacentElement('afterbegin',img);
 }
 
 ul.appendChild(fragment);
