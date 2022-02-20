@@ -5,17 +5,17 @@ const lists = [
    ]
 
 const promise = new Promise(resolve => {
-    resolve(lists)
+    resolve(lists);
 });
 
-promise.then(() => {
+promise.then((lists) => {
     const fragment = document.createDocumentFragment();
     for(const list of lists){
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
         a.textContent = list.text;
-        a.href = '/' +list.to;
+        a.href = `/${list.to}`;
         img.src = list.img;
         img.alt = list.alt;
 
