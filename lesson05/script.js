@@ -8,9 +8,9 @@ const promise = new Promise(resolve => {
     resolve(lists);
 });
 
-promise.then((lists) => {
+promise.then((value) => {
     const fragment = document.createDocumentFragment();
-    for(const list of lists){
+    for(const list of value){
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
