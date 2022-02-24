@@ -18,7 +18,7 @@ const createList = new Promise(resolve => {
         a.href = `/${list.to}`;
         img.src = list.img;
         img.alt = list.alt;
-        fragment.appendChild(li).appendChild(a).insertAdjacentElement('afterbegin',img);
+        fragment.appendChild(li).appendChild(a).appendChild(img);
     }
     const ul = document.getElementById('js-list');
     ul.appendChild(fragment);
