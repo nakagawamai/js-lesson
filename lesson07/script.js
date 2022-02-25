@@ -1,6 +1,5 @@
-const loading = document.getElementById('js-loading');
-
 function createLoading(){
+    const loading = document.getElementById('js-loading');
     const loadingImg = document.createElement('img');
     loadingImg.src = "loading-circle.gif";
     loadingImg.alt = "ローディング画像";
@@ -8,7 +7,7 @@ function createLoading(){
 }
 
 function removeLoading(){
-    loading.remove();
+    document.getElementById('js-loading').remove();
 }
 
 function createList(value){
