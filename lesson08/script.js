@@ -25,6 +25,7 @@ function createLists(value){
 }
 
 function SetDataToLists(){
+    createLoading();
     return new Promise((resolve,reject) => {
     const lists = [
         {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
@@ -33,8 +34,6 @@ function SetDataToLists(){
     setTimeout(() => reject(Error('エラーです')),3000);
 });
 }
-
-createLoading();
 
 SetDataToLists().then((value) =>{
     removeLoading();
