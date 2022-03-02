@@ -9,7 +9,7 @@ function removeLoading(){
     document.getElementById('js-loading').remove();
 }
 
-function createList(value){
+function createLists(value){
     const fragment = document.createDocumentFragment();
     for(const list of value){
         const li = document.createElement('li');
@@ -24,8 +24,7 @@ function createList(value){
     document.getElementById('js-list').appendChild(fragment);
 }
 
-function getList(){
-    createLoading();
+function SetDataToLists(){
     return new Promise((resolve,reject) => {
     const lists = [
         {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
@@ -35,9 +34,11 @@ function getList(){
 });
 }
 
-getList().then((value) =>{
+createLoading();
+
+SetDataToLists().then((value) =>{
     removeLoading();
-    createList(value);
+    createLists(value);
 })
 .catch((error) => {
     console.error(error);
