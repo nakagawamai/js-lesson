@@ -9,7 +9,7 @@ function removeLoadingImg(){
     document.getElementById('js-loading').remove();
 }
 
- function showCategories(result){
+function showCategories(result){
     const fragment = document.createDocumentFragment();
     for(const list of result){
         const li = document.createElement('li');
@@ -24,7 +24,7 @@ function removeLoadingImg(){
     document.getElementById('js-list').appendChild(fragment);
 }
 
-async function SetCategoriesAfter3Seconds(){
+function SetCategoriesAfter3Seconds(){
     return new Promise(resolve => {
     const categories = [
         {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
