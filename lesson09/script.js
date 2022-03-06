@@ -25,6 +25,7 @@ function showCategories(result){
 }
 
 function SetCategoriesAfter3Seconds(){
+    showLoadingImg();
     return new Promise(resolve => {
     const categories = [
         {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
@@ -42,5 +43,4 @@ async function awaitGetCategories(){
     showCategories(result);
 }
 
-showLoadingImg();
 awaitGetCategories();
