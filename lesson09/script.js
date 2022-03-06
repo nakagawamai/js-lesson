@@ -38,7 +38,7 @@ function SetCategoriesAfter3Seconds(){
 }
 
 async function awaitGetCategories(){
-    let result = await SetCategoriesAfter3Seconds();
+    const result = await SetCategoriesAfter3Seconds();
     removeLoadingImg();
     showCategories(result);
 }
