@@ -9,7 +9,7 @@ function removeLoadingImg(){
     document.getElementById('js-loading').remove();
 }
 
-function getDataAfter3Seconds(){
+function getData(){
     return new Promise((resolve,reject) => {
         const categriesData = [
             {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
@@ -28,7 +28,7 @@ function getDataAfter3Seconds(){
 async function getDataProcess(){
     showLoadingImg();
     try{
-       return await getDataAfter3Seconds();
+       return await getData();
     }catch(e){
         console.error(e.message);
     }finally{
