@@ -10,17 +10,13 @@ function removeLoadingImg(){
 }
 
 function getData(){
-    return new Promise((resolve,reject) => {
+    return new Promise(resolve => {
         const categriesData = [
             {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"},
             {to: "message.html", img: "2.png", alt:"画像2", text: "メッセージ"}
         ];
         setTimeout(() => {
-            if(categriesData){
                 resolve(categriesData);
-            }else{
-                reject(new Error('データの取得ができませんでした'));
-            }
         },3000);
     });
 }
@@ -28,7 +24,7 @@ function getData(){
 async function getDataProcess(){
     showLoadingImg();
     try{
-       return await getData();
+        return await getData();
     }catch(e){
         console.error(e.message);
     }finally{
