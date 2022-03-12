@@ -1,0 +1,50 @@
+function showLoadingImg(){
+    const loadingImg = document.createElement('img');
+    loadingImg.src = "loading-circle.gif";
+    loadingImg.alt = "ローディング画像";
+    document.getElementById('js-loading').appendChild(loadingImg);
+}
+
+function removeLoadingImg(){
+    document.getElementById('js-loading').remove();
+}
+
+async function getData(){
+    showLoadingImg();
+    try{
+        const url = "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0";
+        const response = await fetch(url);
+        const json = await response.json();
+        const data = await json.data;
+        return data;
+    }catch(e){
+        document.getElementById('js-list').textContent = "データが取得できませんでした";
+        throw new Error(e);
+    }finally{
+        removeLoadingImg();
+    }
+}
+
+async function  showList(){
+    const result = await getData();
+    const fragment = document.createDocumentFragment();
+    const ul = document.getElementById('js-list');
+
+    if(result){
+        for(const list of result){
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            const img = document.createElement('img');
+            a.textContent = list.text;
+            a.href = `/${list.to}`;
+            img.src = list.img;
+            img.alt = list.alt;
+            fragment.appendChild(li).appendChild(a).appendChild(img);
+        }
+        ul.appendChild(fragment);
+    }else{
+        ul.textContent = "条件に一致するデータがありません";
+    }
+}
+
+showList();
