@@ -30,7 +30,7 @@ async function getData(){
     }
 }
 
-async function  showList(){
+async function  renderList(){
     const result = await getData();
     //resultがtrueではないとき
     if (!result) {
@@ -52,4 +52,4 @@ async function  showList(){
     ul.appendChild(fragment);
 }
 
-showList();
+renderList();
