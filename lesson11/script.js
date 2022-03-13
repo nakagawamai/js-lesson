@@ -14,12 +14,17 @@ async function getData(){
     try{
         const url = "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0";
         const response = await fetch(url);
+        //responseがokではないとき
+        if(!response.ok){
+        throw new Error(`${response.status}:${response.text}`);
+        }
+        //responseがokのとき
         const json = await response.json();
         const data = await json.data;
         return data;
     }catch(e){
-        document.getElementById('js-list').textContent = "データが取得できませんでした";
-        throw new Error(e);
+        document.getElementById('js-list').textContent = e;
+        console.error(e);
     }finally{
         removeLoadingImg();
     }
@@ -27,10 +32,13 @@ async function getData(){
 
 async function  showList(){
     const result = await getData();
+    //resultがtrueではないとき
+    if (!result) {
+        return;
+    }
+    //resultがtrueのとき
     const fragment = document.createDocumentFragment();
     const ul = document.getElementById('js-list');
-
-    if(result){
         for(const list of result){
             const li = document.createElement('li');
             const a = document.createElement('a');
@@ -41,10 +49,7 @@ async function  showList(){
             img.alt = list.alt;
             fragment.appendChild(li).appendChild(a).appendChild(img);
         }
-        ul.appendChild(fragment);
-    }else{
-        ul.textContent = "条件に一致するデータがありません";
-    }
+    ul.appendChild(fragment);
 }
 
 showList();
