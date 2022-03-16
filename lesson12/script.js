@@ -9,6 +9,8 @@ function removeLoadingImg(){
     document.getElementById('js-loading').remove();
 }
 
+
+
 async function getData(){
     showLoadingImg();
     try{
@@ -44,7 +46,7 @@ async function  renderList(){
             const a = document.createElement('a');
             const img = document.createElement('img');
             a.textContent = list.text;
-            a.href = `/${list.to}`;
+            a.href = `/${list.a}`;
             img.src = list.img;
             img.alt = list.alt;
             fragment.appendChild(li).appendChild(a).insertAdjacentElement('afterbegin',img);
