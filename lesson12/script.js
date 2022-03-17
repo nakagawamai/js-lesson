@@ -1,8 +1,11 @@
 function showLoadingImg(){
+    const div = document.createElement('div');
     const loadingImg = document.createElement('img');
+    div.id = "js-loading";
     loadingImg.src = "loading-circle.gif";
     loadingImg.alt = "ローディング画像";
-    document.getElementById('js-loading').appendChild(loadingImg);
+    
+    document.body.insertAdjacentElement('afterbegin',div).appendChild(loadingImg);
 }
 
 function removeLoadingImg(){
