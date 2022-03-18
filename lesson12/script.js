@@ -25,25 +25,7 @@ async function fetchdata(){
     return data;
 }
 
-async function getData(){
-    showLoadingImg();
-    try{
-        return await fetchdata();
-    }catch(e){
-        document.getElementById('js-list').textContent = e;
-        console.error(e);
-    }finally{
-        removeLoadingImg();
-    }
-}
-
-async function  renderList(){
-    const result = await getData();
-    //resultがtrueではないとき
-    if (!result) {
-        return;
-    }
-    //resultがtrueのとき
+function renderList(result) {
     const fragment = document.createDocumentFragment();
     const ul = document.getElementById('js-list');
         for(const list of result){
@@ -59,8 +41,26 @@ async function  renderList(){
     ul.appendChild(fragment);
 }
 
+async function init(){
+    showLoadingImg();
+    try{
+        const result = await fetchdata();
+        //resultがtrueではないとき
+        if (!result) {
+            return;
+        }
+        //resultがtrueのとき
+        renderList(result);
+    }catch(e){
+        document.getElementById('js-list').textContent = e;
+        console.error(e);
+    }finally{
+        removeLoadingImg();
+    }
+}
+
 const btn = document.getElementById('js-button');
 btn.addEventListener('click',function(){
-    renderList();
     btn.remove();
+    init();
 },false);
