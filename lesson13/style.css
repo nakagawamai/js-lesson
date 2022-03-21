@@ -1,0 +1,121 @@
+body,html{
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-size: 16px;
+    color:rgb(70, 70, 70);
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+.wrapper{
+    height: 100vh;
+}
+
+/*js-list,
+#js-loading*/
+#js-list,#js-loading{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+}
+#js-list li{
+    margin-bottom:33px;
+    padding-bottom:9px;
+}
+#js-list li a{
+    font-size:1.25rem;
+    font-weight: bold;
+
+}
+#js-list li img{
+    display: inline-block;
+    width: 70px;
+    padding-right:10px;
+    vertical-align: middle;
+}
+
+/*ボタン*/
+.btn {
+    display: inline-block;
+    background: #1f5dc7;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1;
+    width: 180px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+.btn:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+#js-open-btn{
+    background: #a5a5a5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+}
+#js-open-btn.is-deactive{
+    display: none;
+}
+.close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    cursor: pointer;
+}
+.close-btn:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+/*js-modal*/
+#js-modal{
+    display: none;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    transition: all 0.4s;
+}
+#js-modal.is-show{
+    display: block;
+}
+.modal-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    width: 70%;
+    height: 50%;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+}
+
