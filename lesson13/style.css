@@ -14,7 +14,7 @@ a:hover{
 }
 
 /*ul li*/
-ul{
+.list{
     position: absolute;
     text-align: center;
     top: 50%;
@@ -23,16 +23,16 @@ ul{
     -webkit-transform: translateY(-50%) translateX(-50%);
     width: 100%;
 }
-ul li{
+.list-item{
     margin-bottom:33px;
     padding-bottom:9px;
 }
-ul li a{
+.list-item a{
     font-size:1.25rem;
     font-weight: bold;
 
 }
-ul li img{
+.list-item img{
     display: inline-block;
     padding-right:10px;
     vertical-align: middle;

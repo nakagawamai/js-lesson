@@ -27,6 +27,7 @@ function renderList(result) {
     const ul = document.getElementById('js-list');
         for(const list of result){
             const li = document.createElement('li');
+            li.className = "list-item";
             const a = document.createElement('a');
             const img = document.createElement('img');
             a.textContent = list.text;
