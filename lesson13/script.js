@@ -62,16 +62,16 @@ async function init(){
     const requestButton = document.getElementById('js-request-btn');
 
 function openModalWindow(){   
-    openButton.addEventListener("click",function () {
-        modal.classList.add("is-show");
+    openButton.addEventListener('click',function () {
+        modal.classList.add('is-show');
         this.classList.add('is-deactive');
     },false);
 }
 
 function closeModalWindow(){ 
-    closeButton.addEventListener("click", function () {
+    closeButton.addEventListener('click', function () {
         modal.classList.remove("is-show");
-        openButton.classList.remove("is-deactive");
+        openButton.classList.remove('is-deactive');
     },false);
 }
 
