@@ -54,26 +54,27 @@ async function init(){
     }
 }
 
-function modalWindow(){
-    const modal = document.getElementById('js-modal');
-    const openButton = document.getElementById('js-open-btn');
-    const closeButton = document.getElementById('js-close-btn');
-    const requestButton = document.getElementById('js-request-btn');
-    
-    openButton.addEventListener('click',function(){
-        modal.classList.add('is-show');
-        openButton.classList.add('is-deactive');
+function openModalWindow(){   
+    document.getElementById('js-open-btn').addEventListener('click',function(){
+        document.getElementById('js-modal').classList.add('is-show');
+        this.classList.add('is-deactive');
     },false);
+}
 
-    closeButton.addEventListener('click',function(){
-        modal.classList.remove('is-show');
-        openButton.classList.remove('is-deactive');
+function closeModalWindow(){ 
+    document.getElementById('js-close-btn').addEventListener('click',function(){
+        document.getElementById('js-modal').classList.remove('is-show');
+        document.getElementById('js-open-btn').classList.remove('is-deactive');
     },false);
+}
 
-    requestButton.addEventListener('click', function(){
-        modal.classList.remove('is-show');
+function requestData(){ 
+    document.getElementById('js-request-btn').addEventListener('click', function(){
+        document.getElementById('js-modal').classList.remove('is-show');
         init();
     },false);
 }
 
-modalWindow();
+openModalWindow();
+closeModalWindow();
+requestData();
