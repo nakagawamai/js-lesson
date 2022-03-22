@@ -46,9 +46,9 @@ async function init(){
             return;
         }
         renderList(result);
-    }catch(e){
-        document.getElementById('js-list').textContent = e;
-        console.error(e);
+    }catch(error){
+        document.getElementById('js-list').textContent = error;
+        console.error(error);
     }finally{
         removeLoadingImg();
     }
