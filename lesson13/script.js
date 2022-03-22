@@ -14,11 +14,9 @@ function removeLoadingImg(){
 async function fetchdata(){
     const endpoint = "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0";
     const response = await fetch(endpoint);
-    //responseがokではないとき
     if(!response.ok){
     throw new Error(`${response.status}:${response.text}`);
     }
-    //responseがokのとき
     const json = await response.json();
     const data = await json.data;
     return data;
@@ -44,11 +42,9 @@ async function init(){
     showLoadingImg();
     try{
         const result = await fetchdata();
-        //resultがtrueではないとき
         if (!result) {
             return;
         }
-        //resultがtrueのとき
         renderList(result);
     }catch(e){
         document.getElementById('js-list').textContent = e;
