@@ -55,11 +55,10 @@ async function init(){
     }
 }
 
-(function(){
-    const modal = document.getElementById('js-modal');
-    const openButton = document.getElementById('js-open-btn');
-    const closeButton = document.getElementById('js-close-btn');
-    const requestButton = document.getElementById('js-request-btn');
+const modal = document.getElementById('js-modal');
+const openButton = document.getElementById('js-open-btn');
+const closeButton = document.getElementById('js-close-btn');
+const requestButton = document.getElementById('js-request-btn');
 
 function openModalWindow(){   
     openButton.addEventListener('click',function () {
@@ -85,5 +84,3 @@ function requestData(){
 openModalWindow();
 closeModalWindow();
 requestData();
-
-}());
