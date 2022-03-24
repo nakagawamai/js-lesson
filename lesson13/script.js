@@ -63,14 +63,14 @@ const requestButton = document.getElementById('js-request-btn');
 function openModalWindow(){   
     openButton.addEventListener('click',function () {
         modal.classList.add('is-show');
-        this.classList.add('is-deactive');
+        this.classList.add('is-hide');
     },false);
 }
 
 function closeModalWindow(){ 
     closeButton.addEventListener('click', function () {
         modal.classList.remove("is-show");
-        openButton.classList.remove('is-deactive');
+        openButton.classList.remove('is-hide');
     },false);
 }
 

@@ -67,7 +67,7 @@ a:hover{
     transform: translateY(-50%) translateX(-50%);
     -webkit-transform: translateY(-50%) translateX(-50%);
 }
-.open-btn.is-deactive{
+.open-btn.is-hide{
     display: none;
 }
 .close-btn{
