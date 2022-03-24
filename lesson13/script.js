@@ -61,26 +61,20 @@ const closeButton = document.getElementById('js-close-btn');
 const requestButton = document.getElementById('js-request-btn');
 
 function openModalWindow(){   
-    openButton.addEventListener('click',function () {
-        modal.classList.add('is-show');
-        this.classList.add('is-hide');
-    },false);
+    modal.classList.add('is-show');
+    this.classList.add('is-hide');
 }
 
 function closeModalWindow(){ 
-    closeButton.addEventListener('click', function () {
-        modal.classList.remove("is-show");
-        openButton.classList.remove('is-hide');
-    },false);
+    modal.classList.remove('is-show');
+    openButton.classList.remove('is-hide');
 }
 
 function requestData(){ 
-    requestButton.addEventListener('click', function(){
-        modal.classList.remove('is-show');
-        init();
-    },false);
+    modal.classList.remove('is-show');
+    init();
 }
 
-openModalWindow();
-closeModalWindow();
-requestData();
+openButton.addEventListener('click',openModalWindow,false);
+closeButton.addEventListener('click', closeModalWindow, false);
+requestButton.addEventListener('click', requestData, false);
