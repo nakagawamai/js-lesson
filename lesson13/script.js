@@ -15,7 +15,7 @@ async function fetchdata(){
     const endpoint = "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0";
     const response = await fetch(endpoint);
     if(!response.ok){
-    throw new Error(`${response.status}:${response.text}`);
+    throw new Error(`${response.status}:${response.statusText}`);
     }
     const json = await response.json();
     const data = await json.data;
