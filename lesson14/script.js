@@ -69,10 +69,10 @@ const openBtn    = document.getElementById('js-open-btn');
 const closeBtn   = document.getElementById('js-close-btn');
 const requestBtn = document.getElementById('js-request-btn');
 
-const closeModal     = () => modal.classList.remove('is-show');
-const openModal      = () => modal.classList.add('is-show');
-const hideOpenBtn    = () => openBtn.classList.add('is-hide');
-const showOpenBtn    = () => openBtn.classList.remove('is-hide');
+const closeModal  = () => modal.classList.remove('is-show');
+const openModal   = () => modal.classList.add('is-show');
+const hideOpenBtn = () => openBtn.classList.add('is-hide');
+const showOpenBtn = () => openBtn.classList.remove('is-hide');
 
 openBtn.addEventListener('click',() => {
     openModal();
