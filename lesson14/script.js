@@ -1,10 +1,10 @@
 const showLoadingImg = () => {
-    const div        = document.createElement('div');
-    const loadingImg = document.createElement('img');
-    div.id           = "js-loading";
-    loadingImg.src   = "img/loading-circle.gif";
-    loadingImg.alt   = "ローディング画像";
-    document.body.insertAdjacentElement('afterbegin',div).appendChild(loadingImg);
+    const loadingPlace = document.createElement('div');
+    const loadingImg   = document.createElement('img');
+    loadingPlace.id    = "js-loading";
+    loadingImg.src     = "img/loading-circle.gif";
+    loadingImg.alt     = "ローディング画像";
+    document.body.insertAdjacentElement('afterbegin',loadingPlace).appendChild(loadingImg);
 }
 
 const removeLoadingImg = () => document.getElementById('js-loading').remove();
