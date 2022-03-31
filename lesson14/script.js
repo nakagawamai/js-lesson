@@ -25,7 +25,7 @@ const renderList = (result) => {
     document.getElementById('js-list').appendChild(fragment);
 }
 
-const fetchdata = async () => {
+const fetchData = async () => {
     try{ 
     const endpoint = "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0";
     const response = await fetch(endpoint);
@@ -44,9 +44,9 @@ const init = async (number) => {
     showLoadingImg();
     try{
         console.log(number);
-        const result = await fetchdata();
+        const result = await fetchData();
         if(!result){
-            return
+            return;
         }
         renderList(result);
     }catch(error){
