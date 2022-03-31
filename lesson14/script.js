@@ -7,9 +7,7 @@ const showLoadingImg = () => {
     document.body.insertAdjacentElement('afterbegin',div).appendChild(loadingImg);
 }
 
-const removeLoadingImg = () => {
-    document.getElementById('js-loading').remove();
-}
+const removeLoadingImg = () => document.getElementById('js-loading').remove();
 
 const renderList = (result) => {
     const fragment = document.createDocumentFragment();
@@ -59,10 +57,7 @@ const init = async (number) => {
     }
 }
 
-const getInputNumber = () => {
-    const inputNumber = document.getElementById('js-input-number');
-    return inputNumber.value;
-}
+const getInputNumber = () => document.getElementById('js-input-number').value;
 
 const modal      = document.getElementById('js-modal');
 const openBtn    = document.getElementById('js-open-btn');
