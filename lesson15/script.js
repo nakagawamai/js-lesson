@@ -86,15 +86,15 @@ submitBtn.addEventListener('click',(event) => {
 
     /*バリデーション*/
     const errItem = [];
-    if(!number){
+    if(!number.trim()){ 
         errItem.push('数字');
     }
-    if(!name){
+    if(!name.trim()){
         errItem.push('名前');
     }
     if(errItem.length){
         errMsg.className   = "error-msg";
-        errMsg.textContent = `${errItem}が未入力です`;
+        errMsg.textContent = `${errItem}を入力してください`;
         return;
     }
 
