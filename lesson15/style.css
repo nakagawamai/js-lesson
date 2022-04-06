@@ -1,0 +1,170 @@
+body,html{
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-size: 16px;
+    color:rgb(70, 70, 70);
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+/*ローディング画像*/
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+/*ul li*/
+.list{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+}
+.list-item{
+    margin-bottom:33px;
+    padding-bottom:9px;
+}
+.list-item a{
+    font-size:1.25rem;
+    font-weight: bold;
+
+}
+.list-item img{
+    display: inline-block;
+    padding-right:10px;
+    vertical-align: middle;
+}
+
+/*ボタン*/
+.btn {
+    display: inline-block;
+    background: #1f5dc7;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    padding: 7px 20px;
+    cursor: pointer;
+    z-index: 1;
+    width: 100%;
+    max-width: 15rem;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+.btn:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+.open-btn{
+    background: #a5a5a5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+}
+.open-btn.is-hide{
+    display: none;
+}
+.close-btn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    cursor: pointer;
+}
+.close-btn:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+/*モーダル*/
+.modal{
+    display: none;
+    position: relative;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    transition: all 0.4s;
+}
+.modal.is-show{
+    display: block;
+}
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    padding: 20px;
+}
+@media (max-width:375px){
+    .modal-content{
+        width: 80%;
+        height: 70%;
+    }
+}
+
+/*入力フォーム*/
+.form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 15rem;
+}
+.form-info{
+    font-size:1rem;
+    font-weight: bold;
+    color:#1f5dc7;
+    margin-bottom:24px;
+}
+.error-msg{
+    color:#ff5050;
+    font-size:0.8rem;
+    margin-bottom:10px;
+    padding: 10px;
+    background: #ffe7e7;
+}
+input{
+    display: inline-block;
+    background: #f7f7f7;
+    font-size:0.8rem;
+    padding: 5px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    border: 1px solid #c2c0c0;
+    width: 100%;
+}
+input::placeholder{
+    color: #a5a5a5;
+}
+label{
+    display: inline-block;
+    font-size:0.9rem;
+}
