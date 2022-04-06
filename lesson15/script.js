@@ -86,7 +86,7 @@ submitBtn.addEventListener('click',(event) => {
 
     /*バリデーション*/
     const errItem = [];
-    if(!number.trim()){ 
+    if(!number.trim()){
         errItem.push('数字');
     }
     if(!name.trim()){
@@ -100,4 +100,4 @@ submitBtn.addEventListener('click',(event) => {
 
     init(number,name);
     closeModal();
-}, false)
+}, false);
