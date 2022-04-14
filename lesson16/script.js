@@ -133,7 +133,7 @@ const renderArticles = (result) => {
 
             const commentLength = article.comment.length; 
             const articleDateMs = new Date(article.date).getTime();
-            const periodDayMs   = new Date().getTime() - (7*24*60*60*1000);
+            const periodDayMs   = new Date().getTime() - (3*24*60*60*1000);
 
 
             if(periodDayMs < articleDateMs){
