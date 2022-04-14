@@ -1,0 +1,147 @@
+body,html{
+    color: #051c2d;
+    font-size: 16px;
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.list{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/*ローディング画像*/
+.loading-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/*トピックス*/
+.topics-list{
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+    width: 100%;
+    max-width: 700px;
+    height: 50px;
+    margin:100px auto 0px auto;
+}
+.topics-list__item{
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align : center;
+    letter-spacing: 0.1rem;
+    background: #f0f0f0;
+    width: 25%;
+    height: 80%;
+    padding: 10px;
+    margin-right: 3px;
+    border-radius: 3px 3px 0px 0px;
+    border: 5px solid #051c2d;
+    border-bottom: none;
+}
+.topics-list__item:last-child{
+    margin-right: initial;
+}
+.topics-list__item.is-active{
+    height: 100%;
+    background:#fff;
+}
+.topics-list__item a{
+    display: block;
+}
+@media (max-width:650px){
+    .topics-list__item a{
+        font-size:0.9rem;
+    }
+}
+
+/*コンテンツエリア*/
+.contents-area{
+    display: flex;
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+    gap: 20px;
+    margin:auto;
+    border: 5px solid #051c2d;
+    border-top:none;
+}
+.contents-item{
+    width: 50%;
+}
+@media(max-width:412px){
+    .contents-area{
+        flex-direction: column;
+    }
+    .contents-item{
+        width: 100%;
+        margin:auto;
+    }
+}
+
+/*トピックス画像*/
+.topics-img__item{
+    display: none;
+}
+.topics-img__item.is-active{
+    display: block;
+}
+.topics-img__item{
+    max-width: 375px;
+    width: 100%;
+}
+
+/*記事タイトル*/
+.article-list{
+    display: none;
+}
+.article-list.is-active{
+    display: block;
+}
+.article-list__item{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.article-list__item a{
+    display: inline-block;
+}
+@media (max-width:650px){
+    .article-list__item{
+        font-size:1rem;
+    }
+}
+.comment-icon{
+    display: inline-block;
+    width: 20px;
+    margin-left :10px;
+}
+.new-icon{
+    display: inline-block;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 3px 5px;
+    margin-left: 10px;
+    background:#f37f13;
+    border-radius: 5px;
+}
+.comment-number{
+    font-size: 0.8rem;
+    display: inline-block;
+    border-radius: 50px;
+    margin-left: 3px;
+}
