@@ -166,20 +166,20 @@ const switchTabTopics = (result) => {
 
     for (const topic of tabTopics ){
         topic.addEventListener('click',function (){
-        const tabTopicsIsShow = document.getElementsByClassName('topics-list__item is-active');
-        const topicsImgIsShow = document.getElementsByClassName('topics-img__item is-active');
-        const articleIsShow   = document.getElementsByClassName('article-list is-active');
+        const tabTopicsIsActive = document.getElementsByClassName('topics-list__item is-active');
+        const topicsImgIsActive = document.getElementsByClassName('topics-img__item is-active');
+        const articleIsActive   = document.getElementsByClassName('article-list is-active');
 
         const arrayTabs = Array.prototype.slice.call(tabTopics);
         const index = arrayTabs.indexOf(this);
 
-        tabTopicsIsShow[0].classList.remove('is-active');
+        tabTopicsIsActive[0].classList.remove('is-active');
         this.classList.add('is-active');
 
-        topicsImgIsShow[0].classList.remove('is-active');
+        topicsImgIsActive[0].classList.remove('is-active');
         topicsImg[index].classList.add('is-active');
 
-        articleIsShow[0].classList.remove('is-active');
+        articleIsActive[0].classList.remove('is-active');
         articleList[index].classList.add('is-active');
         });
     }
