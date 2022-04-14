@@ -38,15 +38,15 @@ const fetchData = async () => {
 const init = async () => {
     showLoading();
     try{
-        const result = await fetchData();
-        if(!result){
+        const newsData = await fetchData();
+        if(!newsData){
             return;
         }
         showContentsArea();
-        renderTopics(result);
-        renderArticles(result);
-        renderImages(result);
-        switchTabTopics(result);
+        renderTopics(newsData);
+        renderArticles(newsData);
+        renderImages(newsData);
+        switchTabTopics(newsData);
     }catch(error){
         console.error(error);
     }finally{
@@ -63,10 +63,10 @@ const showContentsArea = () =>{
     .insertAdjacentElement('afterend',contentsArea);
 }
 
-const renderTopics = (result) => {
+const renderTopics = (newsDate) => {
     const topicsArea     = document.getElementById('js-topics-list');
     const fragmentTopics = document.createDocumentFragment();
-    for (const topics of result){
+    for (const topics of newsDate){
         const category     = document.createElement('li');
         const categroyLink = document.createElement('a');
         category.classList.add('topics-list__item');
@@ -76,13 +76,13 @@ const renderTopics = (result) => {
     topicsArea.appendChild(fragmentTopics);
 }
 
-const renderImages = (result) => {
+const renderImages = (newsDate) => {
     const contentsArea  = document.getElementById('js-contents-area');
     const imageArea     = document.createElement('div');
     imageArea.className = "contents-item topics-img";
 
     const fragmentTopicImg = document.createDocumentFragment();
-    for (const topics of result){
+    for (const topics of newsDate){
         const topicsImg = document.createElement('img');
         topicsImg.id    = `${topics.categories + '-img' }`;
         topicsImg.src   = topics.picture;
@@ -113,13 +113,13 @@ const showCommentNumber = (commentLength) => {
     return commentNumber;
 }
 
-const renderArticles = (result) => {
+const renderArticles = (newsDate) => {
     const contentsArea    = document.getElementById('js-contents-area');
     const articleArea     = document.createElement('div');
     articleArea.className = "contents-item articles";
 
     const fragmentAritcle = document.createDocumentFragment(); 
-    for (const topics of result){
+    for (const topics of newsDate){
         const articleList = document.createElement('ul');
         articleList.id    = `${topics.categories + "-articles"}`;
         articleList.classList.add('article-list');
@@ -151,13 +151,13 @@ const renderArticles = (result) => {
     contentsArea.appendChild(articleArea).appendChild(fragmentAritcle);    
 }
 
-const switchTabTopics = (result) => {
+const switchTabTopics = (newsDate) => {
     const tabTopics   = document.getElementsByClassName('topics-list__item');
     const topicsImg   = document.getElementsByClassName('topics-img__item');
     const articleList = document.getElementsByClassName('article-list');
     
     /*初期表示*/
-    const index = result.findIndex(value => value.isActive === true);
+    const index = newsDate.findIndex(value => value.isActive === true);
     if(index){
         tabTopics[index].classList.add('is-active');
         topicsImg[index].classList.add('is-active');
