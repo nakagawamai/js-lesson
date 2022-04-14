@@ -125,7 +125,7 @@ const renderArticles = (result) => {
         articleList.classList.add('article-list');
 
         const articles = topics.articles;
-        for( article of articles ){
+        for(const article of articles ){
             const articleItem   = document.createElement('li');
             const articleLink   = document.createElement('a'); 
             articleItem.classList.add('article-list__item');
@@ -157,14 +157,14 @@ const switchTabTopics = (result) => {
     const articleList = document.getElementsByClassName('article-list');
     
     /*初期表示*/
-    const index = result.findIndex(value => value.isActive == true);
+    const index = result.findIndex(value => value.isActive === true);
     if(index){
         tabTopics[index].classList.add('is-active');
         topicsImg[index].classList.add('is-active');
         articleList[index].classList.add('is-active');
     }
 
-    for (topic of tabTopics ){
+    for (const topic of tabTopics ){
         topic.addEventListener('click',function (){
         const tabTopicsIsShow = document.getElementsByClassName('topics-list__item is-active');
         const topicsImgIsShow = document.getElementsByClassName('topics-img__item is-active');
