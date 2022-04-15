@@ -14,13 +14,6 @@ a:hover{
     transition: 0.2s;
 }
 
-.list{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
-
 /*ローディング画像*/
 .loading-area{
     display: flex;
