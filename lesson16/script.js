@@ -170,7 +170,7 @@ const switchTabTopics = (newsDate) => {
         const topicsImgIsActive = document.getElementsByClassName('topics-img__item is-active');
         const articleIsActive   = document.getElementsByClassName('article-list is-active');
 
-        const arrayTabs = Array.prototype.slice.call(tabTopics);
+        const arrayTabs = Array.from(tabTopics);
         const index = arrayTabs.indexOf(this);
 
         tabTopicsIsActive[0].classList.remove('is-active');
