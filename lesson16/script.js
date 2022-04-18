@@ -1,4 +1,3 @@
-
 const showLoading = () => {
     const loadingArea     = document.createElement('div');
     const loadingImg      = document.createElement('img');
@@ -92,24 +91,33 @@ const renderImages = (newsDate) => {
     contentsArea.appendChild(imageArea).appendChild(fragmentTopicImg);
 }
 
-const showNewIcon = () => {
+const showSpecificPeriodNewIconToArticles = (articleDate,articleLink) => {
     const newIcon       = document.createElement('span');
     newIcon.className   = "new-icon";
     newIcon.textContent = "New";
-    return newIcon;
+
+    const SpecificPeriod = 3;
+    const dateDifferencial  = dateFns.differenceInDays(new Date(), new Date(articleDate));
+    
+    if(SpecificPeriod > dateDifferencial){
+        articleLink.appendChild(newIcon);
+    }
+    return dateDifferencial;
 }
 
-const showCommentIcon = () => {
+const showCommentIconWithNumber = (commentLength,articleLink) => {
     const commentIcon     = document.createElement('img');
     commentIcon.src       = "img/comment-dots-solid.svg";
     commentIcon.className = "comment-icon";
-    return commentIcon;
-}
 
-const showCommentNumber = (commentLength) => {
     const commentNumber       = document.createElement('span');
     commentNumber.textContent = commentLength;
     commentNumber.className   = "comment-number";
+
+    if(commentLength > 0 ){
+        articleLink.appendChild(commentIcon);
+        articleLink.appendChild(commentNumber);
+    }
     return commentNumber;
 }
 
@@ -131,19 +139,10 @@ const renderArticles = (newsDate) => {
             articleItem.classList.add('article-list__item');
             articleLink.textContent  = article.title;
 
+            const articleDate   = article.date;
             const commentLength = article.comment.length; 
-            const articleDateMs = new Date(article.date).getTime();
-            const periodDayMs   = new Date().getTime() - (3*24*60*60*1000);
-
-
-            if(periodDayMs < articleDateMs){
-                articleLink.appendChild(showNewIcon());
-            }
-            
-            if(commentLength > 0){
-                articleLink.appendChild(showCommentIcon());
-                articleLink.appendChild(showCommentNumber(commentLength));
-            }
+            showSpecificPeriodNewIconToArticles(articleDate,articleLink);
+            showCommentIconWithNumber(commentLength,articleLink);
 
             fragmentAritcle.appendChild(articleList).appendChild(articleItem).appendChild(articleLink);
         };
