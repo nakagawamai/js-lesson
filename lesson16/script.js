@@ -45,7 +45,9 @@ const init = async () => {
         renderTopics(newsData);
         renderArticlesSection(newsData);
         renderImages(newsData);
-        switchTabTopics(newsData);
+
+        activateFirstTopic(newsData);
+        switchTabTopics();
     }catch(error){
         console.error(error);
     }finally{
@@ -155,18 +157,23 @@ const renderArticlesItem = ({articles}) => {
     return articleTitleFlagment;
 }
 
-const switchTabTopics = (newsDate) => {
+const activateFirstTopic = (newsData) => {
+  const tabTopics   = document.getElementsByClassName("topics-list__item");
+  const topicsImg   = document.getElementsByClassName("topics-img__item");
+  const articleList = document.getElementsByClassName("article-list");
+
+  const index = newsData.findIndex((value) => value.isActive === true);
+  if (index) {
+    tabTopics[index].classList.add("is-active");
+    topicsImg[index].classList.add("is-active");
+    articleList[index].classList.add("is-active");
+  }
+}
+
+const switchTabTopics = () => {
     const tabTopics   = document.getElementsByClassName('topics-list__item');
     const topicsImg   = document.getElementsByClassName('topics-img__item');
     const articleList = document.getElementsByClassName('article-list');
-    
-    /*初期表示*/
-    const index = newsDate.findIndex(value => value.isActive === true);
-    if(index){
-        tabTopics[index].classList.add('is-active');
-        topicsImg[index].classList.add('is-active');
-        articleList[index].classList.add('is-active');
-    }
 
     for (const topic of tabTopics ){
         topic.addEventListener('click',function (){
