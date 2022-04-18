@@ -43,7 +43,7 @@ const init = async () => {
         }
         showContentsArea();
         renderTopics(newsData);
-        renderArticles(newsData);
+        renderArticlesSection(newsData);
         renderImages(newsData);
         switchTabTopics(newsData);
     }catch(error){
@@ -121,7 +121,7 @@ const showCommentIconWithNumber = (commentLength,articleLink) => {
     return commentNumber;
 }
 
-const renderArticles = (newsDate) => {
+const renderArticlesSection = (newsDate) => {
     const contentsArea    = document.getElementById('js-contents-area');
     const articleArea     = document.createElement('div');
     articleArea.className = "contents-item articles";
@@ -131,23 +131,28 @@ const renderArticles = (newsDate) => {
         const articleList = document.createElement('ul');
         articleList.id    = `${topics.categories + "-articles"}`;
         articleList.classList.add('article-list');
-
-        const articles = topics.articles;
-        for(const article of articles ){
-            const articleItem   = document.createElement('li');
-            const articleLink   = document.createElement('a'); 
-            articleItem.classList.add('article-list__item');
-            articleLink.textContent  = article.title;
-
-            const articleDate   = article.date;
-            const commentLength = article.comment.length; 
-            showSpecificPeriodNewIconToArticles(articleDate,articleLink);
-            showCommentIconWithNumber(commentLength,articleLink);
-
-            fragmentAritcle.appendChild(articleList).appendChild(articleItem).appendChild(articleLink);
-        };
-    }
+        
+        fragmentAritcle.appendChild(articleList).appendChild(renderArticlesItem(topics));
+    };
     contentsArea.appendChild(articleArea).appendChild(fragmentAritcle);    
+}
+
+const renderArticlesItem = ({articles}) => {
+    const articleTitleFlagment = document.createDocumentFragment(); 
+    for(const article of articles ){
+        const articleItem   = document.createElement('li');
+        const articleLink   = document.createElement('a'); 
+        articleItem.classList.add('article-list__item');
+        articleLink.textContent  = article.title;
+
+        const articleDate   = article.date;
+        const commentLength = article.comment.length; 
+        showSpecificPeriodNewIconToArticles(articleDate,articleLink);
+        showCommentIconWithNumber(commentLength,articleLink);
+
+        articleTitleFlagment.appendChild(articleItem).appendChild(articleLink);
+    };
+    return articleTitleFlagment;
 }
 
 const switchTabTopics = (newsDate) => {
