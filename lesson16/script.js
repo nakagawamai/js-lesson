@@ -64,10 +64,10 @@ const showContentsArea = () =>{
     .insertAdjacentElement('afterend',contentsArea);
 }
 
-const renderTopics = (newsDate) => {
+const renderTopics = (newsData) => {
     const topicsArea     = document.getElementById('js-topics-list');
     const fragmentTopics = document.createDocumentFragment();
-    for (const topics of newsDate){
+    for (const topics of newsData){
         const category     = document.createElement('li');
         const categroyLink = document.createElement('a');
         category.classList.add('topics-list__item');
@@ -77,13 +77,13 @@ const renderTopics = (newsDate) => {
     topicsArea.appendChild(fragmentTopics);
 }
 
-const renderImages = (newsDate) => {
+const renderImages = (newsData) => {
     const contentsArea  = document.getElementById('js-contents-area');
     const imageArea     = document.createElement('div');
     imageArea.className = "contents-item topics-img";
 
     const fragmentTopicImg = document.createDocumentFragment();
-    for (const topics of newsDate){
+    for (const topics of newsData){
         const topicsImg = document.createElement('img');
         topicsImg.id    = `${topics.categories + '-img' }`;
         topicsImg.src   = topics.picture;
@@ -123,13 +123,13 @@ const showCommentIconWithNumber = (commentLength,articleLink) => {
     return commentNumber;
 }
 
-const renderArticlesSection = (newsDate) => {
+const renderArticlesSection = (newsData) => {
     const contentsArea    = document.getElementById('js-contents-area');
     const articleArea     = document.createElement('div');
     articleArea.className = "contents-item articles";
 
     const fragmentAritcle = document.createDocumentFragment(); 
-    for (const topics of newsDate){
+    for (const topics of newsData){
         const articleList = document.createElement('ul');
         articleList.id    = `${topics.categories + "-articles"}`;
         articleList.classList.add('article-list');
