@@ -1,3 +1,5 @@
+import { differenceInDays } from "/node_modules/date-fns"
+
 const showLoading = () => {
     const loadingArea     = document.createElement('div');
     const loadingImg      = document.createElement('img');
@@ -99,7 +101,7 @@ const showSpecificPeriodNewIconToArticles = (articleDate,articleLink) => {
     newIcon.textContent = "New";
 
     const SpecificPeriod = 3;
-    const dateDifferencial  = dateFns.differenceInDays(new Date(), new Date(articleDate));
+    const dateDifferencial  = differenceInDays(new Date(), new Date(articleDate));
     
     if(SpecificPeriod > dateDifferencial){
         articleLink.appendChild(newIcon);
