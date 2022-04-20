@@ -136,12 +136,12 @@ const renderArticlesSection = (newsData) => {
         articleList.id    = `${topics.categories + "-articles"}`;
         articleList.classList.add('article-list');
         
-        fragmentAritcle.appendChild(articleList).appendChild(renderArticlesItem(topics));
+        fragmentAritcle.appendChild(articleList).appendChild(createArticleTitleFlagment(topics));
     };
     contentsArea.appendChild(articleArea).appendChild(fragmentAritcle);    
 }
 
-const renderArticlesItem = ({articles}) => {
+const createArticleTitleFlagment = ({articles}) => {
     const articleTitleFlagment = document.createDocumentFragment(); 
     for(const article of articles ){
         const articleItem   = document.createElement('li');
