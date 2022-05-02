@@ -130,11 +130,7 @@ const SwitchSliderItem = () => {
     }
 }
 
-const changeCurrentNumber = (index) =>{
-    const currentNumber = document.getElementById("js-currentNumber");
-    currentNumber.textContent = `${index +1}`;
-    return currentNumber;
-}
+const changeCurrentNumber = (index) => document.getElementById("js-currentNumber").textContent = `${index +1}`;
 
 const disabledButton = (sliderItems,index) => {
     const nextBtn    = document.getElementById("js-nextBtn");
