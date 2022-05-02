@@ -1,0 +1,92 @@
+body,html{
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-size: 16px;
+    color:rgb(70, 70, 70);
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+h1{
+    font-size: 2rem;
+}
+p{
+    margin:15px 0px;
+}
+
+/*ローディング*/
+.loading{
+    text-align: center;
+    background: #fff;
+    margin-top:50px;
+}
+
+/*スライダー*/
+.slider{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 50px;
+    margin: 50px auto;
+    background: #fff;
+}
+.slider__item{
+    display: none;
+    text-align: center;
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+}
+.slider__item.is-active{
+    display: block;
+}
+.slide-image{
+    width: 100%;
+}
+
+/*ボタン*/
+.slider-btn{
+    position: absolute;
+    font-size: 1rem;
+    color:#5d5d5d;
+    top: 50%;
+    background: #fff;
+    border: 2px solid #5b5b5b;
+    padding: 8px 10px;
+    border-radius: 50px;
+    z-index: 999;
+    opacity:0.9;
+}
+.slider-btn:hover{
+    opacity: 0.6;
+}
+.prev-btn{
+    left: 20px;
+    transform: rotate( 90deg );
+}
+.next-btn{
+    right: 20px;
+    transform: rotate( -90deg );
+}
+.prev-btn:before,.next-btn:before{
+    content:"▼";
+}
+
+/*ページネーション*/
+.pagenation{
+    font-size:1.5rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    width: 100%;
+    z-index: 999;
+    margin:5px 0px;
+}
+.current-number{
+    color:#db0206;
+}
