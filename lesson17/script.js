@@ -68,7 +68,7 @@ const init = async () => {
             return;
         }
         renderSliderItems(sliderData);
-        renderPagenation(sliderData);
+        getPageNumber(sliderData);
         
         renderButtons();
         isActiveFirstSliderItem();
@@ -101,12 +101,11 @@ const renderButtons = () => {
     slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
 }
 
-const renderPagenation = (sliderData) => {
-    const pagenation    = createElement({tagName:"p",className:"pagenation",text:`/${sliderData.length}`});
+const getPageNumber = (sliderData) => {
+    const pageNumber    = createElement({tagName:"p",className:"page-number",text:`/${sliderData.length}`});
     const currentNumber = createElement({tagName:"span",id:"js-currentNumber",className:"current-number",text:"1"});
 
-    slider.appendChild(pagenation).insertAdjacentElement("afterbegin",currentNumber);
-    return pagenation;
+    slider.appendChild(pageNumber).insertAdjacentElement("afterbegin",currentNumber);
 }
 
 const isActiveFirstSliderItem = () => document.getElementsByClassName("slider__item")[0].classList.add("is-active");
