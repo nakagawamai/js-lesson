@@ -66,6 +66,9 @@ p{
 .slider-btn:hover{
     opacity: 0.6;
 }
+.slider-btn:disabled{
+    pointer-events: none;
+}
 .prev-btn{
     left: 20px;
     transform: rotate( 90deg );
