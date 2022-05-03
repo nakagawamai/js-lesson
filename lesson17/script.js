@@ -1,47 +1,31 @@
 const slider = document.getElementById("js-slider");
 
-const createElement = ({tagName,id,className,text}) => {
-    const element = document.createElement(tagName);
-    if(id){
-        element.id = id;
+const createElement = (obj) => {
+    const element = document.createElement(obj.tagName);
+    if(obj.id){
+        element.id = obj.id;
     }
-    element.className = className;
-    element.textContent = text;
+    element.className = obj.className;
+    element.textContent = obj.text;
+    element.src = obj.src;
+    element.alt = obj.alt;
     return element;
 }
 
-const createImage = ({id,className,src,alt}) => {
-    const image     = document.createElement("img");
-    if(id){
-        image.id = id;
-    }
-    image.className = className;
-    image.src = src;
-    image.alt = alt;
-    return image;
-}
-
-const createButton = ({id,className}) => {
-    const button = document.createElement("button");
-    button.id = id;
-    button.className = className;
-    return button;
-}
-
 const createErrorMessage = (error) => {
-    const errMsg  = createElement({tagName:"p",className:"error-msg",text:error})
+    const errMsg = createElement({tagName:"p",className:"error-msg",text:error})
 
     slider.appendChild(errMsg);
 }
 
 const showLoading = () => {
-    const loadingImg = createImage({
+    const loadingImg = createElement({
+        tagName:"img",
         id:"js-loading",
         className:"loading",
         src:"img/loading-circle.gif",
         alt:"ローディング"
     });
-
     slider.appendChild(loadingImg);
 }
 
@@ -85,7 +69,7 @@ const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const [index,image] of sliderData.entries()){
         const sliderItem = createElement({tagName:"div",className:"slider__item"});
-        const slideImage = createImage({className:"slide-image", src:image.img, alt:image.alt});
+        const slideImage = createElement({tagName:"img",className:"slide-image",src:image.img,alt:image.alt});
         sliderItem.style.zIndex = `${sliderData.length -+ index}`;
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
@@ -94,8 +78,8 @@ const renderSliderItems = (sliderData) => {
 }
 
 const renderButtons = () => {
-    const prevBtn = createButton({id:"js-prevBtn",className:"js-btn prev-btn slider-btn"});
-    const nextBtn = createButton({id:"js-nextBtn",className:"js-btn next-btn slider-btn"});
+    const prevBtn = createElement({tagName:"button",id:"js-prevBtn",className:"js-btn prev-btn slider-btn"});
+    const nextBtn = createElement({tagName:"button",id:"js-nextBtn",className:"js-btn next-btn slider-btn"});
     prevBtn.disabled = "true";
 
     slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
