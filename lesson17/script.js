@@ -72,7 +72,7 @@ const init = async () => {
         
         renderButtons();
         isActiveFirstSliderItem();
-        SwitchSliderItem();
+        switchSliderItem();
     }catch(error){
         console.error(error);
         createErrorMessage(error);
@@ -111,7 +111,7 @@ const renderPagenation = (sliderData) => {
 
 const isActiveFirstSliderItem = () => document.getElementsByClassName("slider__item")[0].classList.add("is-active");
 
-const SwitchSliderItem = () => {
+const switchSliderItem = () => {
     const sliderButtons = document.getElementsByClassName("js-btn");
     const sliderItems   = document.getElementsByClassName("slider__item");
 
