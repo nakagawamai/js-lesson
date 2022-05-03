@@ -70,7 +70,6 @@ const renderSliderItems = (sliderData) => {
     for(const image of sliderData){
         const sliderItem = createElement({tagName:"div",className:"slider__item"});
         const slideImage = createElement({tagName:"img",className:"slide-image",src:image.img,alt:image.alt});
-        //sliderItem.style.zIndex = `${sliderData.length -+ index}`;
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
