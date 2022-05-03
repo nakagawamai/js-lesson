@@ -32,7 +32,6 @@ const createErrorMessage = (error) => {
     const errMsg  = createElement({tagName:"p",className:"error-msg",text:error})
 
     slider.appendChild(errMsg);
-    return errMsg;
 }
 
 const showLoading = () => {
@@ -140,8 +139,6 @@ const disabledButton = (sliderItems,index) => {
 
     prevBtn.disabled = index === firstIndex;
     nextBtn.disabled = index === lastIndex;
-
-    return lastIndex;
 }
 
 init();
