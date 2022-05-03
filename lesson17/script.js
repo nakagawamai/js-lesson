@@ -67,10 +67,10 @@ const init = async () => {
 
 const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
-    for(const [index,image] of sliderData.entries()){
+    for(const image of sliderData){
         const sliderItem = createElement({tagName:"div",className:"slider__item"});
         const slideImage = createElement({tagName:"img",className:"slide-image",src:image.img,alt:image.alt});
-        sliderItem.style.zIndex = `${sliderData.length -+ index}`;
+        //sliderItem.style.zIndex = `${sliderData.length -+ index}`;
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
@@ -97,11 +97,10 @@ const isActiveFirstSliderItem = () => document.getElementsByClassName("slider__i
 const switchSliderItem = () => {
     const sliderButtons = document.getElementsByClassName("js-btn");
     const sliderItems   = document.getElementsByClassName("slider__item");
-
     let index = 0;
     for (const button of sliderButtons ){
-        button.addEventListener("click",function(){      
-            sliderItems[index].classList.remove("is-active");
+        button.addEventListener("click",function(){  
+            sliderItems[index].classList.remove("is-active");    
 
             button.id === "js-nextBtn" ? index++ : index--;
             sliderItems[index].classList.add("is-active");
