@@ -1,30 +1,28 @@
 const slider = document.getElementById("js-slider");
 
-const createElement = (obj) => {
-    const element = document.createElement(obj.tagName);
-    if(obj.id){
-        element.id = obj.id;
-    }
-    element.className = obj.className;
-    element.textContent = obj.text;
-    element.src = obj.src;
-    element.alt = obj.alt;
+const createAttributedElements = ({tag,attrObj,str}) =>{
+    const element = document.createElement(tag);
+    Object.keys(attrObj).forEach((attribute) => {
+        element.setAttribute(attribute, attrObj[attribute]);
+    });
+    if(str !== undefined) element.textContent = str;
     return element;
 }
 
 const createErrorMessage = (error) => {
-    const errMsg = createElement({tagName:"p",className:"error-msg",text:error})
+    const errMsg = createAttributedElements({tag:"p",attrObj:{class:"error-msg"},str:error})
 
     slider.appendChild(errMsg);
 }
 
 const showLoading = () => {
-    const loadingImg = createElement({
-        tagName:"img",
+    const loadingImg = createAttributedElements({tag:"img",
+        attrObj:{
         id:"js-loading",
-        className:"loading",
+        class:"loading",
         src:"img/loading-circle.gif",
         alt:"ローディング"
+        }
     });
     slider.appendChild(loadingImg);
 }
@@ -68,8 +66,8 @@ const init = async () => {
 const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
-        const sliderItem = createElement({tagName:"div",className:"slider__item"});
-        const slideImage = createElement({tagName:"img",className:"slide-image",src:image.img,alt:image.alt});
+        const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"slider__item"}});
+        const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
@@ -77,16 +75,16 @@ const renderSliderItems = (sliderData) => {
 }
 
 const renderButtons = () => {
-    const prevBtn = createElement({tagName:"button",id:"js-prevBtn",className:"js-btn prev-btn slider-btn"});
-    const nextBtn = createElement({tagName:"button",id:"js-nextBtn",className:"js-btn next-btn slider-btn"});
+    const prevBtn = createAttributedElements({tag:"button",attrObj:{id:"js-prevBtn",class:"js-btn prev-btn slider-btn"}});
+    const nextBtn = createAttributedElements({tag:"button",attrObj:{id:"js-nextBtn",class:"js-btn next-btn slider-btn"}});
     prevBtn.disabled = "true";
 
     slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
 }
 
 const getPageNumber = (sliderData) => {
-    const pageNumber    = createElement({tagName:"p",className:"page-number",text:`/${sliderData.length}`});
-    const currentNumber = createElement({tagName:"span",id:"js-currentNumber",className:"current-number",text:"1"});
+    const pageNumber    = createAttributedElements({tag:"p",attrObj:{className:"page-number"},str:`/${sliderData.length}`});
+    const currentNumber = createAttributedElements({tag:"span",attrObj:{id:"js-currentNumber",class:"current-number"},text:"1"});
 
     slider.appendChild(pageNumber).insertAdjacentElement("afterbegin",currentNumber);
 }
