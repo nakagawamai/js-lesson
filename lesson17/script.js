@@ -67,8 +67,7 @@ const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
         const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"slider__item"}});
-        const slideImage = createAttributedElements({
-            tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
+        const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
