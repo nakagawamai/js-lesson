@@ -80,7 +80,7 @@ const renderButtons = () => {
         attrObj:{
             id:"js-prevBtn",
             class:"js-btn prev-btn slider-btn",
-            disabled:"true"
+            disabled:true
         }
     });
 
