@@ -83,8 +83,8 @@ const renderButtons = () => {
 }
 
 const getPageNumber = (sliderData) => {
-    const pageNumber    = createAttributedElements({tag:"p",attrObj:{className:"page-number"},str:`/${sliderData.length}`});
-    const currentNumber = createAttributedElements({tag:"span",attrObj:{id:"js-currentNumber",class:"current-number"},text:"1"});
+    const pageNumber    = createAttributedElements({tag:"p",attrObj:{class:"page-number"},str:`/${sliderData.length}`});
+    const currentNumber = createAttributedElements({tag:"span",attrObj:{id:"js-currentNumber",class:"current-number"},str:"1"});
 
     slider.appendChild(pageNumber).insertAdjacentElement("afterbegin",currentNumber);
 }
