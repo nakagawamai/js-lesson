@@ -67,7 +67,8 @@ const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
         const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"slider__item"}});
-        const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
+        const slideImage = createAttributedElements({
+            tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
@@ -75,9 +76,22 @@ const renderSliderItems = (sliderData) => {
 }
 
 const renderButtons = () => {
-    const prevBtn = createAttributedElements({tag:"button",attrObj:{id:"js-prevBtn",class:"js-btn prev-btn slider-btn"}});
-    const nextBtn = createAttributedElements({tag:"button",attrObj:{id:"js-nextBtn",class:"js-btn next-btn slider-btn"}});
-    prevBtn.disabled = "true";
+    const prevBtn = createAttributedElements({
+        tag:"button",
+        attrObj:{
+            id:"js-prevBtn",
+            class:"js-btn prev-btn slider-btn",
+            disabled:"true"
+        }
+    });
+
+    const nextBtn = createAttributedElements({
+        tag:"button",
+        attrObj:{
+            id:"js-nextBtn",
+            class:"js-btn next-btn slider-btn"
+        }
+    });
 
     slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
 }
