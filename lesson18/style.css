@@ -1,0 +1,134 @@
+body,html{
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-size: 16px;
+    color:rgb(70, 70, 70);
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+h1{
+    font-size: 2rem;
+}
+p{
+    margin:15px 0px;
+}
+/*ローディング*/
+.loading{
+    text-align: center;
+    background: #fff;
+    margin-top:50px;
+}
+
+/*スライダー*/
+.slider{
+    position: relative;
+    text-align: center;
+    height: 80vh;
+    width: auto;
+    height: 440px;
+    max-width: 600px;
+    margin: auto;
+    padding:50px;
+}
+.slider__item{
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    z-index: 0;
+    padding: 50px;
+}
+.slider__item.is-active{
+    z-index: 1;
+}
+.slide-image{
+    width: 100%;
+}
+@media(max-width:414px){
+    .slider{
+        width: auto;
+        height: 290px;
+    }
+}
+/*ボタン*/
+.slider-btn{
+    position: absolute;
+    font-size: 1rem;
+    color:#5d5d5d;
+    top: calc(50% + 50px);
+    background: #fff;
+    border: 2px solid #5b5b5b;
+    padding: 8px 10px;
+    border-radius: 50px;
+    z-index: 999;
+    opacity:0.9;
+}
+.slider-btn:hover{
+    opacity: 0.6;
+}
+.slider-btn:disabled{
+    pointer-events: none;
+}
+.prev-btn{
+    left: 0;
+    transform: rotate( 90deg );
+}
+.next-btn{
+    right: 0;
+    transform: rotate( -90deg );
+}
+.prev-btn:before,.next-btn:before{
+    content:"▼";
+}
+
+/*ページナンバー*/
+.page-number{
+    position: absolute;
+    bottom:-100px;
+    right: 0;
+    left: 0;
+    font-size:1.5rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    width: 100%;
+    z-index: 999;
+}
+.current-number{
+    color:#db0206;
+}
+@media(max-width:414px){
+    .page-number{
+        bottom: -90px;
+    }
+}
+
+/*ドットページネーション*/
+.dot-pagination{
+    position: absolute;
+    z-index: 999;
+    bottom: -50px;
+    width: 100%;
+    text-align: center;
+    right: 0;
+    left: 0;
+}
+.dot-pagination__item{
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.dot-pagination__item:before{
+    content: "●";
+    color:#bcbaba;
+}
+.dot-pagination__item.is-active:before{
+    content: "●";
+    color:#db0206;
+}
