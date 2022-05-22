@@ -191,11 +191,11 @@ const addClickEventForButton = (sliderData) => {
 }
 
 const addClickEventForDotPagination = (sliderData) => {
-    const dotPaginetions = document.getElementsByClassName("dot-pagination__item");
+    const dotPaginetions   = document.getElementsByClassName("dot-pagination__item");
+    const arrayPaginations = [...dotPaginetions];
     
     for(const dotPagination of dotPaginetions ){
         dotPagination.addEventListener("click",function(){
-            const arrayPaginations = [...dotPaginetions];
             currentIndex = arrayPaginations.indexOf(this);
 
             switchSlider(sliderData,currentIndex);
