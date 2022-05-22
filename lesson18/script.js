@@ -165,7 +165,8 @@ const renderDotPagination = (sliderData) => {
     });
 
     const fragment = document.createDocumentFragment();
-    for (const pagination of sliderData){
+    const length = sliderData.length;
+    for(let i = 0; i < length; i++){
         const paginationItem     = document.createElement("li");
         paginationItem.className = "dot-pagination__item";
         fragment.appendChild(paginationItem);
