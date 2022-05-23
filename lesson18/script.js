@@ -169,7 +169,7 @@ const switchSliderItems = (currentIndex) => {
 
 const switchDotPaginations = (currentIndex) => {
     const dotPaginations = document.getElementsByClassName("dot-pagination__item");
-    document.querySelector(".is-active").classList.remove("is-active");
+    document.querySelector(".dot-pagination__item.is-active").classList.remove("is-active");
     dotPaginations[currentIndex].classList.add("is-active");
 }
 
