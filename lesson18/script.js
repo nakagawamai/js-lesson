@@ -10,29 +10,16 @@ const createAttributedElements = ({tag,attrObj,str}) =>{
 }
 
 const createErrorMessage = (error) => {
-    const errMsg = createAttributedElements({
-        tag:"p",
-        attrObj:{
-            class:"error-msg"
-        },
-        str:error
-    });
-
+    const errMsg = createAttributedElements({tag:"p",attrObj:{class:"error-msg"},str:error});
+    
     slider.appendChild(errMsg);
 }
 
 const showLoading = () => {
-    const loadingImg = createAttributedElements({
-        tag:"img",
-        attrObj:{
-            id:"js-loading",
-            class:"loading",
-            src:"img/loading-circle.gif",
-            alt:"ローディング"
-        }
-    });
-
-    slider.appendChild(loadingImg);
+    const loadingPlace = createAttributedElements({tag:"div",attrObj:{id:"js-loading",class:"loading"}});
+    const loadingImage = createAttributedElements({tag:"img",attrObj:{src:"img/loading-circle.gif",alt:"ローディング"}});
+    
+    slider.appendChild(loadingPlace).appendChild(loadingImage);
 }
 
 const removeLoading = () => document.getElementById("js-loading").remove();
@@ -94,17 +81,8 @@ const resetAutoPlay = (sliderData) => {
 const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
-        const sliderItem     = document.createElement("div");
-        sliderItem.className = "slider__item";
-
-        const slideImage = createAttributedElements({
-            tag:"img",
-            attrObj:{
-                class:"slide-image",
-                src:image.img,
-                alt:image.alt
-            }
-        });
+        const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"slider__item"}});
+        const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
     }
@@ -113,62 +91,27 @@ const renderSliderItems = (sliderData) => {
 }
 
 const getPageNumber = (sliderData) => {
-    const pageNumber = createAttributedElements({
-        tag:"p",
-        attrObj:{
-            class:"page-number"
-        },
-        str:`/${sliderData.length}`
-    });
-    
-    const currentNumber = createAttributedElements({
-        tag:"span",
-        attrObj:{
-            id:"js-currentNumber",
-            class:"current-number"
-        },
-        str:"1"
-    });
+    const pageNumber    = createAttributedElements({tag:"p",attrObj:{class:"page-number"},str:`/${sliderData.length}`});
+    const currentNumber = createAttributedElements({tag:"span",attrObj:{id:"js-currentNumber",class:"current-number"},str:"1"});
 
     slider.appendChild(pageNumber).insertAdjacentElement("afterbegin",currentNumber);
 }
 
 const renderButtons = (sliderData) => {
-    const prevBtn = createAttributedElements({
-        tag:"button",
-        attrObj:{
-            id:"js-prevBtn",
-            class:"js-btn prev-btn slider-btn",
-            disabled:true
-        }
-    });
-
-    const nextBtn = createAttributedElements({
-        tag:"button",
-        attrObj:{
-            id:"js-nextBtn",
-            class:"js-btn next-btn slider-btn"
-        }
-    });
+    const prevBtn = createAttributedElements({tag:"button",attrObj:{id:"js-prevBtn",class:"js-btn prev-btn slider-btn",disabled:true}});
+    const nextBtn = createAttributedElements({tag:"button",attrObj:{id:"js-nextBtn",class:"js-btn next-btn slider-btn"}});
 
     slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
     addClickEventForButton(sliderData);
 }
 
 const renderDotPagination = (sliderData) => {
-    const paginationList = createAttributedElements({
-        tag:"ul",
-        attrObj:{
-            id:"js-dot-pagination",
-            class:"dot-pagination"
-        }
-    });
+    const paginationList = createAttributedElements({tag:"ul",attrObj:{id:"js-dot-pagination",class:"dot-pagination"}});
 
     const fragment = document.createDocumentFragment();
-    const length = sliderData.length;
+    const length   = sliderData.length;
     for(let i = 0; i < length; i++){
-        const paginationItem     = document.createElement("li");
-        paginationItem.className = "dot-pagination__item";
+        const paginationItem = createAttributedElements({tag:"li",attrObj:{class:"dot-pagination__item"}});
         fragment.appendChild(paginationItem);
     }
 
