@@ -113,8 +113,8 @@ p{
     }
 }
 
-/*ドットページネーション*/
-.dot-pagination{
+/*ページネーション*/
+.pagination{
     position: absolute;
     z-index: 999;
     bottom: -50px;
@@ -123,17 +123,17 @@ p{
     right: 0;
     left: 0;
 }
-.dot-pagination__item{
+.pagination__item{
     display: inline-block;
     font-size: 20px;
     margin-right: 10px;
     cursor: pointer;
 }
-.dot-pagination__item:before{
+.pagination__item:before{
     content: "●";
     color:#bcbaba;
 }
-.dot-pagination__item.is-active:before{
+.pagination__item.is-active:before{
     content: "●";
     color:#db0206;
 }

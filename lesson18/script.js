@@ -58,7 +58,7 @@ const renderSliderElements = (sliderData) => {
     renderSliderItems(sliderData);
     getPageNumber(sliderData);
     renderButtons(sliderData);
-    renderDotPagination(sliderData);
+    renderPagination(sliderData);
     isActiveFirstItem();
 }
 
@@ -105,18 +105,18 @@ const renderButtons = (sliderData) => {
     addClickEventForButton(sliderData);
 }
 
-const renderDotPagination = (sliderData) => {
-    const paginationList = createAttributedElements({tag:"ul",attrObj:{id:"js-dot-pagination",class:"dot-pagination"}});
+const renderPagination = (sliderData) => {
+    const paginationList = createAttributedElements({tag:"ul",attrObj:{id:"js-pagination",class:"pagination"}});
 
     const fragment = document.createDocumentFragment();
     const length   = sliderData.length;
     for(let i = 0; i < length; i++){
-        const paginationItem = createAttributedElements({tag:"li",attrObj:{class:"dot-pagination__item"}});
+        const paginationItem = createAttributedElements({tag:"li",attrObj:{class:"pagination__item"}});
         fragment.appendChild(paginationItem);
     }
 
     slider.appendChild(paginationList).appendChild(fragment);
-    addClickEventForDotPagination(sliderData);
+    addClickEventForPagination(sliderData);
 }
 
 let currentIndex = 0;
@@ -133,12 +133,12 @@ const addClickEventForButton = (sliderData) => {
     }
 }
 
-const addClickEventForDotPagination = (sliderData) => {
-    const dotPaginetions   = document.getElementsByClassName("dot-pagination__item");
-    const arrayPaginations = [...dotPaginetions];
+const addClickEventForPagination = (sliderData) => {
+    const paginetions   = document.getElementsByClassName("pagination__item");
+    const arrayPaginations = [...paginetions];
     
-    for(const dotPagination of dotPaginetions ){
-        dotPagination.addEventListener("click",function(){
+    for(const pagination of paginetions ){
+        pagination.addEventListener("click",function(){
             currentIndex = arrayPaginations.indexOf(this);
 
             switchSlider(sliderData,currentIndex);
@@ -149,13 +149,13 @@ const addClickEventForDotPagination = (sliderData) => {
 
 const isActiveFirstItem = () => {
     document.getElementsByClassName("slider__item")[0].classList.add("is-active");
-    document.getElementsByClassName("dot-pagination__item")[0].classList.add("is-active");
+    document.getElementsByClassName("pagination__item")[0].classList.add("is-active");
 }
 
 const switchSlider = (sliderData,currentIndex) => {
     changeCurrentNumber(currentIndex);
     switchSliderItems(currentIndex);
-    switchDotPaginations(currentIndex);
+    switchPaginations(currentIndex);
     switchDisabledButton(sliderData);
 }
 
@@ -167,10 +167,10 @@ const switchSliderItems = (currentIndex) => {
     sliderItems[currentIndex].classList.add("is-active");
 }
 
-const switchDotPaginations = (currentIndex) => {
-    const dotPaginations = document.getElementsByClassName("dot-pagination__item");
-    document.querySelector(".dot-pagination__item.is-active").classList.remove("is-active");
-    dotPaginations[currentIndex].classList.add("is-active");
+const switchPaginations = (currentIndex) => {
+    const paginations = document.getElementsByClassName("pagination__item");
+    document.querySelector(".pagination__item.is-active").classList.remove("is-active");
+    paginations[currentIndex].classList.add("is-active");
 }
 
 const switchDisabledButton = (sliderData) => {
