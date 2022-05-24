@@ -73,9 +73,13 @@ p{
 .slider-btn:hover{
     opacity: 0.6;
 }
-.slider-btn:disabled{
+.slider-btn:disabled {
+    color:#ffffff;
     pointer-events: none;
-}
+    background: #cccccc;
+    border: 2px solid #cccccc;
+    opacity:0.5;
+  }
 .prev-btn{
     left: 0;
     transform: rotate( 90deg );
@@ -123,6 +127,7 @@ p{
     display: inline-block;
     font-size: 20px;
     margin-right: 10px;
+    cursor: pointer;
 }
 .dot-pagination__item:before{
     content: "●";
