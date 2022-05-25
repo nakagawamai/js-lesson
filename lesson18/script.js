@@ -65,7 +65,7 @@ let autoPlay;
 const autoSwitchSlider = (sliderData) =>{
     autoPlay = setInterval(() =>{
         currentIndex ++;
-        if(currentIndex >= sliderData.length){
+        if(currentIndex === sliderData.length){
             currentIndex = 0;
         }
         switchSlider(sliderData,currentIndex);
