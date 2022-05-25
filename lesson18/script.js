@@ -31,8 +31,7 @@ const fetchData = async (URL) => {
         createErrorMessage('現在、サーバーの通信が壊れています');
     }
     const json = await response.json();
-    const data = json.data;
-    return data;
+    return json.data;
 }
 
 const fetchSliderData = (ms) => new Promise(resolve => setTimeout(() => resolve(fetchData("https://myjson.dit.upm.es/api/bins/2bzx")),ms));
