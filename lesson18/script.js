@@ -68,7 +68,7 @@ const autoSwitchSlider = (sliderData) =>{
         if(currentIndex === sliderData.length){
             currentIndex = 0;
         }
-        switchSlider(sliderData,currentIndex);
+        switchSlider(sliderData);
     }, 3000);
 }
 
@@ -126,7 +126,7 @@ const addClickEventForButton = (sliderData) => {
         button.addEventListener("click",function(){
             this.id === "js-nextBtn" ? currentIndex++ : currentIndex--;
 
-            switchSlider(sliderData,currentIndex);
+            switchSlider(sliderData);
             resetAutoPlay(sliderData);
         });
     }
@@ -140,7 +140,7 @@ const addClickEventForPagination = (sliderData) => {
         pagination.addEventListener("click",function(){
             currentIndex = arrayPaginations.indexOf(this);
 
-            switchSlider(sliderData,currentIndex);
+            switchSlider(sliderData);
             resetAutoPlay(sliderData);
         });
     }
@@ -151,22 +151,22 @@ const isActiveFirstItem = () => {
     document.getElementsByClassName("pagination__item")[0].classList.add("is-active");
 }
 
-const switchSlider = (sliderData,currentIndex) => {
-    changeCurrentNumber(currentIndex);
-    switchSliderItems(currentIndex);
-    switchPaginations(currentIndex);
+const switchSlider = (sliderData) => {
+    changeCurrentNumber();
+    switchSliderItems();
+    switchPaginations();
     switchDisabledButton(sliderData);
 }
 
-const changeCurrentNumber = (currentIndex) => document.getElementById("js-currentNumber").textContent = `${currentIndex +1}`;
+const changeCurrentNumber = () => document.getElementById("js-currentNumber").textContent = `${currentIndex +1}`;
 
-const switchSliderItems = (currentIndex) => {
+const switchSliderItems = () => {
     const sliderItems = document.getElementsByClassName("slider__item");
     document.querySelector(".is-active").classList.remove("is-active");
     sliderItems[currentIndex].classList.add("is-active");
 }
 
-const switchPaginations = (currentIndex) => {
+const switchPaginations = () => {
     const paginations = document.getElementsByClassName("pagination__item");
     document.querySelector(".pagination__item.is-active").classList.remove("is-active");
     paginations[currentIndex].classList.add("is-active");
