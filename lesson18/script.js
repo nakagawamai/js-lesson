@@ -80,7 +80,7 @@ const resetAutoPlay = (sliderData) => {
 const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
-        const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"slider__item"}});
+        const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"js-slider__item slider__item"}});
         const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);
@@ -110,7 +110,7 @@ const renderPagination = (sliderData) => {
     const fragment = document.createDocumentFragment();
     const length   = sliderData.length;
     for(let i = 0; i < length; i++){
-        const paginationItem = createAttributedElements({tag:"li",attrObj:{class:"pagination__item"}});
+        const paginationItem = createAttributedElements({tag:"li",attrObj:{class:"js-pagination__item pagination__item"}});
         fragment.appendChild(paginationItem);
     }
 
@@ -133,7 +133,7 @@ const addClickEventForButton = (sliderData) => {
 }
 
 const addClickEventForPagination = (sliderData) => {
-    const paginetions   = document.getElementsByClassName("pagination__item");
+    const paginetions   = document.getElementsByClassName("js-pagination__item");
     const arrayPaginations = [...paginetions];
     
     for(const pagination of paginetions ){
@@ -147,8 +147,8 @@ const addClickEventForPagination = (sliderData) => {
 }
 
 const isActiveFirstItem = () => {
-    document.getElementsByClassName("slider__item")[0].classList.add("is-active");
-    document.getElementsByClassName("pagination__item")[0].classList.add("is-active");
+    document.getElementsByClassName("js-slider__item")[0].classList.add("is-active");
+    document.getElementsByClassName("js-pagination__item")[0].classList.add("is-active");
 }
 
 const switchSlider = (sliderData) => {
@@ -161,14 +161,14 @@ const switchSlider = (sliderData) => {
 const changeCurrentNumber = () => document.getElementById("js-currentNumber").textContent = `${currentIndex +1}`;
 
 const switchSliderItems = () => {
-    const sliderItems = document.getElementsByClassName("slider__item");
+    const sliderItems = document.getElementsByClassName("js-slider__item");
     document.querySelector(".is-active").classList.remove("is-active");
     sliderItems[currentIndex].classList.add("is-active");
 }
 
 const switchPaginations = () => {
-    const paginations = document.getElementsByClassName("pagination__item");
-    document.querySelector(".pagination__item.is-active").classList.remove("is-active");
+    const paginations = document.getElementsByClassName("js-pagination__item");
+    document.querySelector(".js-pagination__item.is-active").classList.remove("is-active");
     paginations[currentIndex].classList.add("is-active");
 }
 
