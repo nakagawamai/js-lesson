@@ -147,8 +147,8 @@ const addClickEventForPagination = (sliderData) => {
 }
 
 const isActiveFirstItem = () => {
-    document.getElementsByClassName("js-slider__item")[0].classList.add("is-active");
-    document.getElementsByClassName("js-pagination__item")[0].classList.add("is-active");
+    document.querySelector(".js-slider__item").classList.add("is-active");
+    document.querySelector(".js-pagination__item").classList.add("is-active");
 }
 
 const switchSlider = (sliderData) => {
