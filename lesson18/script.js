@@ -100,7 +100,7 @@ const renderButtons = (sliderData) => {
     const prevBtn = createAttributedElements({tag:"button",attrObj:{id:"js-prevBtn",class:"js-btn prev-btn slider-btn",disabled:true}});
     const nextBtn = createAttributedElements({tag:"button",attrObj:{id:"js-nextBtn",class:"js-btn next-btn slider-btn"}});
 
-    slider.appendChild(prevBtn).insertAdjacentElement("afterend",nextBtn);
+    slider.appendChild(prevBtn).after(nextBtn);
     addClickEventForButton(sliderData);
 }
 
