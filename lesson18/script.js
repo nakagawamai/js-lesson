@@ -133,17 +133,15 @@ const addClickEventForButton = (sliderData) => {
 }
 
 const addClickEventForPagination = (sliderData) => {
-    const paginetions   = document.getElementsByClassName("js-pagination__item");
-    const arrayPaginations = [...paginetions];
+    const paginations      = document.getElementById("js-pagination");
+    const arrayPaginations = [...document.getElementsByClassName("js-pagination__item")];
     
-    for(const pagination of paginetions ){
-        pagination.addEventListener("click",function(){
-            currentIndex = arrayPaginations.indexOf(this);
+        paginations.addEventListener("click",function(e){
+            currentIndex = arrayPaginations.indexOf(e.target);
 
             switchSlider(sliderData);
             resetAutoPlay(sliderData);
         });
-    }
 }
 
 const isActiveFirstItem = () => {
