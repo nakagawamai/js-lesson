@@ -121,7 +121,6 @@ const renderPagination = (sliderData) => {
     addClickEventForPagination(sliderData);
 }
 
-console.log(sliderStatus.currentIndex);
 const addClickEventForButton = (sliderData) => {
     const sliderButtons = document.getElementsByClassName("js-btn");
 
