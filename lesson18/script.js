@@ -1,4 +1,8 @@
 const slider = document.getElementById("js-slider");
+const sliderStatus = {
+    currentIndex: 0,
+    autoPlay:""
+}
 
 const createAttributedElements = ({tag,attrObj,str}) =>{
     const element = document.createElement(tag);
@@ -61,19 +65,18 @@ const renderSliderElements = (sliderData) => {
     isActiveFirstItem();
 }
 
-let autoPlay;
 const autoSwitchSlider = (sliderData) =>{
-    autoPlay = setInterval(() =>{
-        currentIndex ++;
-        if(currentIndex === sliderData.length){
-            currentIndex = 0;
+    sliderStatus.autoPlay = setInterval(() =>{
+        sliderStatus.currentIndex ++;
+        if(sliderStatus.currentIndex === sliderData.length){
+            sliderStatus.currentIndex = 0;
         }
         switchSlider(sliderData);
     }, 3000);
 }
 
 const resetAutoPlay = (sliderData) => {
-    clearInterval(autoPlay);
+    clearInterval(sliderStatus.autoPlay);
     autoSwitchSlider(sliderData);
 }
 
@@ -118,13 +121,13 @@ const renderPagination = (sliderData) => {
     addClickEventForPagination(sliderData);
 }
 
-let currentIndex = 0;
+console.log(sliderStatus.currentIndex);
 const addClickEventForButton = (sliderData) => {
     const sliderButtons = document.getElementsByClassName("js-btn");
 
     for (const button of sliderButtons ){
         button.addEventListener("click",function(){
-            this.id === "js-nextBtn" ? currentIndex++ : currentIndex--;
+            this.id === "js-nextBtn" ? sliderStatus.currentIndex++ : sliderStatus.currentIndex--;
 
             switchSlider(sliderData);
             resetAutoPlay(sliderData);
@@ -137,7 +140,7 @@ const addClickEventForPagination = (sliderData) => {
     const arrayPaginations = [...document.getElementsByClassName("js-pagination__item")];
     
         paginations.addEventListener("click",function(e){
-            currentIndex = arrayPaginations.indexOf(e.target);
+            sliderStatus.currentIndex = arrayPaginations.indexOf(e.target);
 
             switchSlider(sliderData);
             resetAutoPlay(sliderData);
@@ -156,18 +159,18 @@ const switchSlider = (sliderData) => {
     switchDisabledButton(sliderData);
 }
 
-const changeCurrentNumber = () => document.getElementById("js-currentNumber").textContent = `${currentIndex +1}`;
+const changeCurrentNumber = () => document.getElementById("js-currentNumber").textContent = `${sliderStatus.currentIndex +1}`;
 
 const switchSliderItems = () => {
     const sliderItems = document.getElementsByClassName("js-slider__item");
     document.querySelector(".is-active").classList.remove("is-active");
-    sliderItems[currentIndex].classList.add("is-active");
+    sliderItems[sliderStatus.currentIndex].classList.add("is-active");
 }
 
 const switchPaginations = () => {
     const paginations = document.getElementsByClassName("js-pagination__item");
     document.querySelector(".js-pagination__item.is-active").classList.remove("is-active");
-    paginations[currentIndex].classList.add("is-active");
+    paginations[sliderStatus.currentIndex].classList.add("is-active");
 }
 
 const switchDisabledButton = (sliderData) => {
@@ -176,8 +179,8 @@ const switchDisabledButton = (sliderData) => {
     const firstIndex = 0;
     const lastIndex  = sliderData.length -1;
 
-    prevBtn.disabled = currentIndex === firstIndex;
-    nextBtn.disabled = currentIndex === lastIndex;
+    prevBtn.disabled = sliderStatus.currentIndex === firstIndex;
+    nextBtn.disabled = sliderStatus.currentIndex === lastIndex;
 }
 
 init();
