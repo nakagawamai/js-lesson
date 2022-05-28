@@ -80,7 +80,7 @@ const resetAutoPlay = (sliderData) => {
 const renderSliderItems = (sliderData) => {
     const fragment = document.createDocumentFragment();
     for(const image of sliderData){
-        const sliderItem = createAttributedElements({tag:"div",attrObj:{class:"js-slider__item slider__item"}});
+        const sliderItem = createAttributedElements({tag:"li",attrObj:{class:"js-slider__item slider__item"}});
         const slideImage = createAttributedElements({tag:"img",attrObj:{class:"slide-image",src:image.img,alt:image.alt}});
         
         fragment.appendChild(sliderItem).appendChild(slideImage);

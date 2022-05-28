@@ -26,6 +26,10 @@ p{
 }
 
 /*スライダー*/
+.slider-title{
+    text-align: center;
+    margin-top: 50px;
+}
 .slider{
     position: relative;
     text-align: center;
@@ -38,7 +42,7 @@ p{
 }
 .slider__item{
     position: absolute;
-    top: 70px;
+    top: 0;
     right: 0;
     left: 0;
     text-align: center;
@@ -61,8 +65,8 @@ p{
 .slider-btn{
     position: absolute;
     font-size: 1rem;
-    color:#5d5d5d;
-    top: calc(50% + 50px);
+    color:hsl(0, 0%, 36%);
+    top: calc(50% - 10px);
     background: #fff;
     border: 2px solid #5b5b5b;
     padding: 8px 10px;
@@ -95,7 +99,7 @@ p{
 /*ページナンバー*/
 .page-number{
     position: absolute;
-    bottom:-100px;
+    bottom:-50px;
     right: 0;
     left: 0;
     font-size:1.5rem;
@@ -117,11 +121,11 @@ p{
 .pagination{
     position: absolute;
     z-index: 999;
-    bottom: -50px;
     width: 100%;
     text-align: center;
     right: 0;
     left: 0;
+    bottom: 0;
 }
 .pagination__item{
     display: inline-block;
