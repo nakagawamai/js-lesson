@@ -139,6 +139,10 @@ const addClickEventForPagination = (sliderData) => {
     const arrayPaginations = [...document.getElementsByClassName("js-pagination__item")];
     
         paginations.addEventListener("click",function(e){
+            //イベントハンドラを登録した要素は何もしない
+            if(e.currentTarget === e.target){
+                return;
+            }
             sliderStatus.currentIndex = arrayPaginations.indexOf(e.target);
 
             switchSlider(sliderData);
