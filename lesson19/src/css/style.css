@@ -1,0 +1,501 @@
+body,html{
+    font-family: YuGothic,'Yu Gothic','Yu Gothic UI','ＭＳ ゴシック','ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-size: 16px;
+    color:rgb(70, 70, 70);
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+:root {
+    --main-color: #ffffff;
+    --sub-color: #f8f8f8;
+    --current-color: #145bb7;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+h1{
+    font-size: 2rem;
+}
+.error-message{
+    color: #ff0000;
+    padding: 20px 100px;
+    background: #fedede;
+}
+
+/*ローディング*/
+.loading-area{
+    display: table;
+    text-align: center;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    height: 100%;
+    width: 100%;
+    transition: all 1s;
+    background: var(--sub-color);
+    z-index: 999;
+}
+
+.loading-image{
+    font-size: 3px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    background: var(--current-color);
+    background: -moz-linear-gradient(left, var(--current-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, var(--current-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, var(--current-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, var(--current-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, var(--current-color) 10%, rgba(255, 255, 255, 0) 42%);
+    position: absolute;
+    top: calc(50% - 60px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.loading-image:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: 100% 0 0 0;
+    background: var(--current-color);
+}
+.loading-image:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    border-radius: 50%;
+    background: var(--sub-color);
+}
+@-webkit-keyframes load3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    }
+    @keyframes load3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*スライダー*/
+.slider-list{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    height: 700px;
+    max-width: 1000px;
+    width: 100%;
+    margin:0px auto 30px auto;
+    padding: 30px;
+    overflow: hidden;
+}
+.slider-list__item{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    z-index: 0;
+    width: 100%;
+    opacity : 0;
+    transition: opacity 2s;
+}
+.slider-list__item.is-active{
+    z-index: 1;
+    opacity: 1;
+}
+.image{
+    width: 100%;
+    display: block;
+}
+@media(max-width:1200px){
+    .slider-list{
+        height: 600px;
+    }
+    .image{
+        width: 130%;
+    }
+}
+@media(max-width:780px){
+    .slider-list{
+        height: 400px;
+    }
+    .image{
+        width: 110%;
+    }
+}
+@media(max-width:414px){
+    .slider-list{
+        height:300px;
+    }
+}
+
+/*ボタン*/
+.slider-btn{
+    display: inline-block;
+    position: absolute;
+    font-size: 1rem;
+    color: hsl(0deg 0% 100%);
+    top: calc(50% - 40px);
+    background: var(--current-color);
+    border: 1px solid #ffffff;
+    padding: 15px;
+    border-radius: 50px;
+    z-index: 999;
+    vertical-align: middle;
+    text-decoration: none;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+}
+.slider-btn:hover{
+    opacity: 0.7;
+}
+
+.slider-btn:disabled {
+    color:#ffffff;
+    pointer-events: none;
+    background: #cccccc;
+    border: 2px solid #cccccc;
+}
+.prev-btn{
+    left: 0;
+    transform: rotate(180deg);
+    margin-left:10px;
+}
+.next-btn{
+    right: 0;
+    margin-right:10px;
+}
+.prev-btn:before,.next-btn:before{
+    position: absolute;
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*ページネーション*/
+.pagination-list{
+    position: absolute;
+    font-size:0.85rem;
+    text-align:center;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 27px;
+    z-index: 999;
+    padding: 5px;
+    background:var(--main-color);
+}
+.pagination-list__item{
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.pagination-list__item:hover{
+    opacity:0.7;
+    cursor: pointer;
+}
+.pagination-list__item:before{
+    content: "●";
+    color:#ffffff;
+    text-shadow: #646464 1px 0 5px;
+}
+.pagination-list__item.is-active:before{
+    content: "●";
+    color:var(--current-color);
+    text-shadow: #646464 1px 0 5px;
+}
+@media(max-width:414px){
+    .pagination-list__item{
+        font-size: 0.65rem;
+    }
+}
+
+/*ページ数*/
+#total-number{
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    width: 100%;
+    z-index: 999;
+    padding: 5px;
+    text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+              0px 1px 0 #FFF,  0-1px 0 #FFF,
+              -1px 0 0 #FFF, 1px 0 0 #FFF;
+    background: var(--main-color);
+}
+.current-number{
+    color:var(--current-color);
+}
+@media(max-width:414px){
+    #total-number{
+        font-size: 1rem;
+    }
+}
+
+/*トピックス*/
+.topics-list{
+    position: relative;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+.topics-list__item{
+    color: #ffffff;
+    font-size: 1.25rem;
+    text-align : center;
+    letter-spacing: 0.1rem;
+    background: #135bb7;
+    border-color: #135bb7;
+    border-radius: 3px;
+    width: 25%;
+    padding: 10px 5px;
+    margin-right: 3px;
+    border-bottom: none;
+}
+.topics-list__item:first-child{
+    background: #003a69;
+    border-color:#003a69;
+}
+.topics-list__item:nth-child(2){
+    background: #ea4d36;
+    border-color: #ea4d36;
+}
+.topics-list__item:nth-child(3){
+    background: #f39032;
+    border-color: #f39032;
+}
+.topics-list__item:last-child{
+    margin-right: initial;
+}
+.topics-list__item.is-active{
+    padding: 15px 5px;
+    position: relative;
+}
+
+.topics-list__item.is-active:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    margin: auto;
+    border-style: solid;
+    border-color:#003a69 transparent transparent transparent;
+    border-top-color: inherit;
+    border-width: 15px 15px 0 15px;
+}
+.topics-list__item:not(.is-active):hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+@media (max-width:1200px){
+    .topics-list{
+        max-width: 700px;
+    }
+}
+@media (max-width:780px){
+    .topics-list{
+        padding:0px 20px;
+    }
+    .topics-list__item{
+        font-size:0.9rem;
+    }
+}
+@media (max-width:414px){
+    .topics-list__item{
+        letter-spacing: 0.01rem;
+    }
+}
+
+/*コンテンツエリア*/
+.contents-area{
+    width: 100%;
+    max-width: 1000px;
+    margin:auto;
+}
+.contents-box{
+    display: flex;
+    margin: 0px 0px 100px 0px;
+    border-top:none;
+    border-radius: 3px;
+    background: #ffffff;
+    box-shadow: 0px 20px 70px rgba(0,0,0,0.4);
+}
+.contents-item{
+    width: 70%;
+    margin: 30px;
+}
+.contents-item.topics-img{
+    width: 30%;
+}
+@media (max-width:1200px){
+    .contents-area{
+        max-width: 700px;
+    }
+}
+@media (max-width:780px){
+    .contents-area{
+        padding:0px 20px;
+    }
+}
+@media(max-width: 680px){
+    .contents-box{
+        flex-direction: column-reverse;
+    }
+    .contents-item{
+        width: 100%;
+        margin: initial;
+        padding: 15px;
+    }
+    .contents-item.topics-img{
+        width: 50%;
+        margin: 10px auto 0px auto;
+    }
+}
+
+/*トピックス画像*/
+.topics-img__item{
+    display: none;
+}
+.topics-img__item.is-active{
+    display: block;
+}
+.topics-img__item{
+    max-width: 600px;
+    width: 100%;
+}
+
+/*記事タイトル*/
+.article-list{
+    display: none;
+    margin-top:10px;
+}
+.article-list.is-active{
+    display: block;
+}
+.article-list__item{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+.article-list__item:before{
+    content: "";
+    position: absolute;
+    top: .4em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    background: #cccccc;
+    border-radius: 50%;
+}
+.article-list__item a{
+    color: #1d3994;
+}
+.article-list__item a:hover{
+    text-decoration: underline;
+}
+.article-title{
+    max-width: 340px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width:780px){
+    .article-title{
+        max-width: 280px;
+    }
+}
+@media (max-width:414px){
+    .article-list__item{
+        margin-bottom: 10px;
+    }
+    .article-title{
+        max-width: 200px;
+    }
+}
+
+/*アイコン*/
+.comment-icon{
+    display: inline-block;
+    width: 18px;
+    margin-left: 10px;
+}
+.new-icon{
+    display: inline-block;
+    color: #ffffff;
+    background: #ffa023;
+    font-size: 0.75rem;;
+    margin-left: 5px;
+    padding: 0px 10px;
+    border-radius: 20px;
+}
+.comment-number{
+    font-size: 0.75rem;
+    display: inline-block;
+    border-radius: 50px;
+    margin-left: 3px;
+}
+@media (max-width:414px){
+    .comment-icon{
+        width:15px;
+    }
+}
