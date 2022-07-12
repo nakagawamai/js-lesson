@@ -56,21 +56,21 @@ const renderArticlesSection = (newsData) => {
         valuesByAttributes:{class:"contents-item articles"}
     });
 
-    const fragmentAritcle = document.createDocumentFragment(); 
+    const fragmentArticle = document.createDocumentFragment(); 
     for (const topics of newsData){
         const articleList = createAttributedElements({
             tag:"ul",
             valuesByAttributes:{class:"js-article-list article-list"}
         });
-        fragmentAritcle.appendChild(articleList)
-        .appendChild(createArticleTitleFlagment(topics));
+        fragmentArticle.appendChild(articleList)
+        .appendChild(createArticleTitleFragment(topics));
     }
 
-    contentsBox.appendChild(articleArea).appendChild(fragmentAritcle); 
+    contentsBox.appendChild(articleArea).appendChild(fragmentArticle); 
 }
 
-const createArticleTitleFlagment = ({articles}) => {
-    const articleTitleFlagment = document.createDocumentFragment(); 
+const createArticleTitleFragment = ({articles}) => {
+    const articleTitleFragment = document.createDocumentFragment(); 
 
     for(const article of articles ){
         const articleItem = createAttributedElements({
@@ -89,16 +89,16 @@ const createArticleTitleFlagment = ({articles}) => {
             str:article.title
         });
 
-        articleTitleFlagment.appendChild(articleItem).appendChild(articleLink).appendChild(articleTitle);
+        articleTitleFragment.appendChild(articleItem).appendChild(articleLink).appendChild(articleTitle);
 
-        isNewAriticle(article.date) && showNewIcon(articleItem);
+        isNewArticle(article.date) && showNewIcon(articleItem);
         (article.comment.length) && showCommentIconWithNumber(articleItem, article.comment.length);
     }
 
-    return articleTitleFlagment;
+    return articleTitleFragment;
 }
 
-const isNewAriticle = (articleDate) => {
+const isNewArticle = (articleDate) => {
     const SpecificPeriod = 3;
     const dateDifferencial = differenceInDays(new Date(), new Date(articleDate));
 

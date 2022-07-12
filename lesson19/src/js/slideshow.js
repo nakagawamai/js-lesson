@@ -56,7 +56,7 @@ const renderSliderItems = (sliderData) => {
     activateFirstItem("js-slider-list__item");
 }
 
-const renderPagiantions = () => {
+const renderPaginations = () => {
     const paginationList = createAttributedElements({
         tag:"ul",
         valuesByAttributes:{id:"js-pagination-list", class:"pagination-list"}});
@@ -164,7 +164,7 @@ const playSlideShow = () => {
 
 const renderSliderElements = (sliderData) => {
     renderSliderItems(sliderData);
-    renderPagiantions();
+    renderPaginations();
     renderButtons();
     getTotalPageNumber();
 }
