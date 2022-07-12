@@ -4,7 +4,7 @@
       "id": "624ea99d26476db2ff6fc08c",
       "isActive": false,
       "picture": "img/cat-news.png",
-      "categories": "News",
+      "category": "News",
       "articles": [
         {
           "id": "624ea99d0d87ab7e03d3ca38",
@@ -81,7 +81,7 @@
       "id": "624ea99dbfeab35e9c3e8281",
       "isActive": true,
       "picture": "img/cat-economic.png",
-      "categories": "Economic",
+      "category": "Economic",
       "articles": [
         {
           "id": "624ea99db415a2dd23763da0",
@@ -152,7 +152,7 @@
       "id": "624ea99d861f4da2da2ba788",
       "isActive": false,
       "picture": "img/cat-sports.png",
-      "categories": "Sports",
+      "category": "Sports",
       "articles": [
         {
           "id": "624ea99d63923d841eab2333",
@@ -241,7 +241,7 @@
       "id": "624ea99ece110530de4cf44a",
       "isActive": false,
       "picture": "img/cat-domestic.png",
-      "categories": "Domestic",
+      "category": "Domestic",
       "articles": [
         {
           "id": "624ea99ea02b8b0e33b576cc",

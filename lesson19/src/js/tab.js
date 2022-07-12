@@ -23,7 +23,7 @@ const renderTopics = (newsData) => {
         const category = createAttributedElements({
             tag:"li",
             valuesByAttributes:{class:"js-topics-list__item topics-list__item"},
-            str:topics.categories
+            str:topics.category
         });
         fragmentTopics.appendChild(category);
     }
