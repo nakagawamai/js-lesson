@@ -100,9 +100,9 @@ const createArticleTitleFragment = ({articles}) => {
 
 const isNewArticle = (articleDate) => {
     const SpecificPeriod = 3;
-    const dateDifferencial = differenceInDays(new Date(), new Date(articleDate));
+    const differentialDays = differenceInDays(new Date(), new Date(articleDate));
 
-    return (SpecificPeriod > dateDifferencial);
+    return (SpecificPeriod > differentialDays);
 }
 
 const showNewIcon = (articleLink) => {
