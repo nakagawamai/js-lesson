@@ -151,8 +151,9 @@ const changeActiveItem  = () => {
     const sliderItems = [ "js-slider-list__item", "js-pagination-list__item" ]
     
     sliderItems.forEach((item) => {
+        const index = counter.count;
         document.getElementsByClassName(`${item} is-active`)[0].classList.remove("is-active");
-        document.getElementsByClassName(item)[counter.count].classList.add("is-active");
+        document.getElementsByClassName(item)[index].classList.add("is-active");
     });
 }
 
