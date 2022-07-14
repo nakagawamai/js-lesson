@@ -134,7 +134,7 @@ const showCommentIconWithNumber = (articleLink,commentLength) => {
 const tabItems = [ "js-topics-list__item", "js-topics-img__item", "js-article-list" ];
 
 const activateFirstTab = (newsData) => {
-    const index = newsData.findIndex((value) => value.isActive === true);
+    const index = newsData.findIndex((value) => value.isActive );
     if (index) {
         tabItems.forEach(function(item) {
             document.getElementsByClassName(item)[index].classList.add("is-active");
