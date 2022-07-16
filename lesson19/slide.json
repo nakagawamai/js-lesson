@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": "624ea99d0d87ab7e032",
+      "alt": "画像１",
+      "img": "img/slide01.png"
+    },
+    {
+      "id": "624ea99d0d87ab7e037",
+      "alt": "画像２",
+      "img": "img/slide02.png"
+    },
+    {
+      "id": "624ea99d0d87ab7e0",
+      "alt": "画像3",
+      "img": "img/slide03.png"
+    },
+    {
+      "id": "624ea99d0d87ab7e045",
+      "alt": "画像4",
+      "img": "img/slide04.png"
+    },
+    {
+      "id": "624ea99d0d87ab7e032",
+      "alt": "画像5",
+      "img": "img/slide05.png"
+    }
+  ]
+}
