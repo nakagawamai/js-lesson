@@ -67,7 +67,7 @@ const renderTableHedaer = () => {
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
 
-    Object.values(UsersTableColumn).map((column) => {
+    Object.values(UsersTableColumn).forEach((column) => {
         const th = createAttributedElements({
             tag:"th",
             valuesByAttributes:{
@@ -88,7 +88,7 @@ const renderTabelBody = (usersData) => {
         const fragment = document.createDocumentFragment();
         const tr = document.createElement("tr");
 
-        Object.keys(UsersTableColumn).map((column) => {
+        Object.keys(UsersTableColumn).forEach((column) => {
             const td = createAttributedElements({
                 tag:"td",
                 valuesByAttributes:{
