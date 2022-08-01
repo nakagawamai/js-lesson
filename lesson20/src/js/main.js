@@ -52,7 +52,7 @@ const initUsersData = async () => {
 const sortUsersDataByIdAsc = (usersData) =>  usersData.sort((a,b) => a.id - b.id); 
 
 const renderTableContents = (usersData) => {
-    renderTableHedaer();
+    renderTableHeader();
     renderTabelBody(usersData);
 }
 const UsersTableColumn = {
@@ -62,7 +62,7 @@ const UsersTableColumn = {
     "age"    : "年齢",
 }
 
-const renderTableHedaer = () => {
+const renderTableHeader = () => {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
