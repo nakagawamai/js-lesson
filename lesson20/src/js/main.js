@@ -32,7 +32,7 @@ const fetchContentsData = (endPointURL,element,ms) => new Promise(resolve => set
 
 const table = document.getElementById("js-table");
 
-const initUserData = async () => {
+const initUsersData = async () => {
     loading.showLoading(table);
     try{
         const usersData = await fetchContentsData(endPointURL.usersData,table,3000);
@@ -103,4 +103,4 @@ const renderTabelBody = (usersData) => {
     }
 }
 
-initUserData();
+initUsersData();
