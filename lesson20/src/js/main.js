@@ -40,7 +40,6 @@ const initUsersData = async () => {
             createErrorMessage("No user.",table);
             return;
         }
-        sortUsersDataByIdAsc(usersData);
         renderTableContents(usersData);
     }catch(error){
         console.error(error);
@@ -48,8 +47,6 @@ const initUsersData = async () => {
        loading.removeLoading(table);
     }
 }
-
-const sortUsersDataByIdAsc = (usersData) =>  usersData.sort((a,b) => a.id - b.id); 
 
 const renderTableContents = (usersData) => {
     renderTableHeader();
