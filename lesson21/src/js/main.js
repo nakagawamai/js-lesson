@@ -143,7 +143,7 @@ const createSortButtons = (columnKey,th) => {
             }
         });
 
-        button.dataOrder != "both" && sortButton.classList.add("hidden");
+        button.dataOrder !== "both" && sortButton.classList.add("hidden");
 
         const sortButtonImage = createAttributedElements({
             tag:"img",
