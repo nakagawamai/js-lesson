@@ -65,7 +65,6 @@ const renderTableHeader = () => {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
-    tr.className = "";
 
     for (const [userKey, userValue] of Object.entries(usersTableColumn)) {
         const th = createAttributedElements({
