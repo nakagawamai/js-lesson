@@ -25,7 +25,7 @@ const fetchData = async (endpointURL,element) => {
         return;
     }
     const json = await response.json();
-    return json.data;
+    return json;
 }
 
 const fetchContentsData = (endPointURL,element,ms) => new Promise(resolve => setTimeout(() => resolve(fetchData(endPointURL,element)),ms));
@@ -35,7 +35,9 @@ const table = document.getElementById("js-table");
 const initUsersData = async () => {
     loading.showLoading(table);
     try{
-        const usersData = await fetchContentsData(endPointURL.usersData,table,500);
+        const json = await fetchContentsData(endPointURL.usersData,table,500);
+        const usersData = json.data;
+
         if (!usersData.length) {
             createErrorMessage("No user.",table);
             return;
