@@ -198,7 +198,7 @@ const sortTableBody = usersData => {
         
         let dataOrder;
         sortButtonsBox.addEventListener("click", (e) => {
-            let index = sortButtons.indexOf(e.target);
+            const index = sortButtons.indexOf(e.target);
             dataOrder = e.target.getAttribute("data-order");
 
             if(e.currentTarget === e.target){
