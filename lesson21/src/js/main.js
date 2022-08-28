@@ -6,7 +6,7 @@ const endPointURL = {
     usersData: "https://myjson.dit.upm.es/api/bins/i55y"
 }
 
-const createErrorMessage = (error,element) => {
+const renderErrorMessage = (error,element) => {
     const errorMessage = createAttributedElements({
         tag:"p",
         valuesByAttributes:{
@@ -21,7 +21,7 @@ const fetchData = async (endpointURL,element) => {
     const response = await fetch(endpointURL);
     if(!response.ok){
         console.error(`${response.status}:${response.statusText}`);
-        createErrorMessage("Communication with the server is broken.",element);
+        renderErrorMessage("Communication with the server is broken.",element);
         return;
     }
     const json = await response.json();
@@ -39,7 +39,7 @@ const initUsersData = async () => {
         const usersData = json.data;
 
         if (!usersData.length) {
-            createErrorMessage("No user.",table);
+            renderErrorMessage("No user.",table);
             return;
         }
         renderTableElements(usersData);
