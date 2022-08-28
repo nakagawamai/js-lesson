@@ -120,11 +120,11 @@ const sortByUsersTableColumn = {
 
 const addSortButtons = (userKey,userValue,th) => {
     for(const value of Object.values(sortByUsersTableColumn)){
-        userValue === value && createSortButtons(userKey,th) ;
+        userValue === value && th.appendChild(createSortButtons(userKey));
     }
 }
 
-const createSortButtons = (columnKey,th) => {
+const createSortButtons = (columnKey) => {
     const sortButtonsBox = createAttributedElements ({
         tag:"div",
         valuesByAttributes:{
@@ -157,7 +157,9 @@ const createSortButtons = (columnKey,th) => {
 
         fragment.appendChild(sortButton).appendChild(sortButtonImage);
     }
-    th.appendChild(sortButtonsBox).appendChild(fragment);
+
+    sortButtonsBox.appendChild(fragment);
+    return sortButtonsBox;
 }
 
 const toggleHiddenClassSortButton = (sortButtons,index) => {
