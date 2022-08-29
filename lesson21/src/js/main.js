@@ -109,9 +109,9 @@ const renderTableBody = usersData => {
 }
 
 const sortButtonAttributes = [
-    {dataOrder:"asc",src:"../img/asc.svg", alt:"asc-image"},
-    {dataOrder:"desc",src:"../img/desc.svg",alt:"desc-image"},
-    {dataOrder:"both",src:"../img/both.svg",alt:"both-image"}
+    {dataOrder:"desc",src:"../img/asc.svg", alt:"asc-image"},
+    {dataOrder:"both",src:"../img/desc.svg",alt:"desc-image"},
+    {dataOrder:"asc",src:"../img/both.svg",alt:"both-image"}
 ]
 
 const sortByUsersTableColumn = {
@@ -144,7 +144,7 @@ const createSortButtons = (columnKey) => {
             }
         });
 
-        button.dataOrder !== "both" && sortButton.classList.add("hidden");
+        button.dataOrder !== "asc" && sortButton.classList.add("hidden");
 
         const sortButtonImage = createAttributedElements({
             tag:"img",
@@ -178,15 +178,15 @@ const sortUsersData = (key, usersData, dataOrder) => {
 
     const sortButtonsFunc = {
         "both": () => {
+            updateTableBody(usersData);
+        },
+        "asc" : () => {
             cloneUsersData.sort((a,b) => a[key] - b[key]);
             updateTableBody(cloneUsersData);
         },
-        "asc" : () => {
+        "desc": () => {
             cloneUsersData.sort((a,b) => b[key] - a[key]);
             updateTableBody(cloneUsersData);
-        },
-        "desc": () => {
-            updateTableBody(usersData);
         }
     }
 
