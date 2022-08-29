@@ -168,7 +168,7 @@ const toggleHiddenClassSortButton = (sortButtons,index) => {
     sortButtons[index].classList.remove("hidden");
 }
 
-const upDateTableBody = usersData =>  {
+const updateTableBody = usersData =>  {
     document.getElementById("js-usersTableBody").remove();
     renderTableBody(usersData);
 };
@@ -179,14 +179,14 @@ const sortUsersData = (key, usersData, dataOrder) => {
     const sortButtonsFunc = {
         "both": () => {
             cloneUsersData.sort((a,b) => a[key] - b[key]);
-            upDateTableBody(cloneUsersData);
+            updateTableBody(cloneUsersData);
         },
         "asc" : () => {
             cloneUsersData.sort((a,b) => b[key] - a[key]);
-            upDateTableBody(cloneUsersData);
+            updateTableBody(cloneUsersData);
         },
         "desc": () => {
-            upDateTableBody(usersData);
+            updateTableBody(usersData);
         }
     }
 
