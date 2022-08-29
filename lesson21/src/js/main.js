@@ -108,7 +108,7 @@ const renderTableBody = usersData => {
     }
 }
 
-const sortButtons = [
+const sortButtonAttributes = [
     {dataOrder:"asc",src:"../img/asc.svg", alt:"asc-image"},
     {dataOrder:"desc",src:"../img/desc.svg",alt:"desc-image"},
     {dataOrder:"both",src:"../img/both.svg",alt:"both-image"}
@@ -135,7 +135,7 @@ const createSortButtons = (columnKey) => {
 
     const fragment = document.createDocumentFragment();
 
-    for(const button of sortButtons){
+    for(const button of sortButtonAttributes){
         const sortButton = createAttributedElements({
             tag:"button",
             valuesByAttributes:{
