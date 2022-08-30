@@ -24,8 +24,7 @@ const fetchData = async (endpointURL,element) => {
         renderErrorMessage("Communication with the server is broken.",element);
         return;
     }
-    const json = await response.json();
-    return json;
+    return await response.json();
 }
 
 const fetchContentsData = (endPointURL,element,ms) => new Promise(resolve => setTimeout(() => resolve(fetchData(endPointURL,element)),ms));
@@ -214,3 +213,9 @@ const sortTableBody = usersData => {
 } 
 
 initUsersData();
+
+var uniqueInOrder=function(iterable){
+    return [...iterable].filter((a,i) => a !== iterable[i-1]);
+}
+
+uniqueInOrder('AAAABBBCCDAABBB');
