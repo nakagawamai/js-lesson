@@ -169,21 +169,19 @@ const updateTableBody = usersData =>  {
 const sortUsersData = (category, usersData, dataOrder) => {
     const cloneUsersData = [...usersData];
 
-    const sortButtonsFunc = {
-        "both": () => {
+    switch (dataOrder) {
+        case "asc":
+            cloneUsersData.sort((a, b) => a[category] - b[category]);
+            updateTableBody(cloneUsersData);
+            break;
+        case "desc":
+            cloneUsersData.sort((a, b) => b[category] - a[category]);
+            updateTableBody(cloneUsersData);
+            break;
+        case "both":
             updateTableBody(usersData);
-        },
-        "asc" : () => {
-            cloneUsersData.sort((a,b) => a[category] - b[category]);
-            updateTableBody(cloneUsersData);
-        },
-        "desc": () => {
-            cloneUsersData.sort((a,b) => b[category] - a[category]);
-            updateTableBody(cloneUsersData);
-        }
+            break;
     }
-
-    Object.keys(sortButtonsFunc).forEach((button) => dataOrder === button && sortButtonsFunc[button]() );
 }
 
 const sortTableBody = usersData => {
