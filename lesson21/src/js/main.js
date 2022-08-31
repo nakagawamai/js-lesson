@@ -193,14 +193,14 @@ const sortTableBody = usersData => {
         
         let dataOrder;
         sortButtonsBox.addEventListener("click", (e) => {
-            const index = sortButtons.indexOf(e.target);
+            const clickedSortButtonIndex = sortButtons.indexOf(e.target);
             dataOrder = e.target.getAttribute("data-order");
 
             if(e.currentTarget === e.target){
                 return;
             }
 
-            toggleHiddenClassSortButton(sortButtons,index);
+            toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
             sortUsersData(category, usersData, dataOrder);
         });
     });
