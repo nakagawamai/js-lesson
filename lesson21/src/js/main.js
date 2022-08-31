@@ -181,6 +181,8 @@ const sortUsersData = (category, usersData, dataOrder) => {
         case "both":
             updateTableBody(usersData);
             break;
+            
+        default:
     }
 }
 
