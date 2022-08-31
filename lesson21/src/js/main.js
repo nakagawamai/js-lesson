@@ -213,9 +213,3 @@ const sortTableBody = usersData => {
 } 
 
 initUsersData();
-
-var uniqueInOrder=function(iterable){
-    return [...iterable].filter((a,i) => a !== iterable[i-1]);
-}
-
-uniqueInOrder('AAAABBBCCDAABBB');
