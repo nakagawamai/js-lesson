@@ -78,7 +78,9 @@ const renderTableHeader = () => {
 
         tr.appendChild(th);
 
-        addSortButtons(userKey,userValue,th);
+        if (sortCategories.includes(userKey)) {
+            th.appendChild(createSortButtons(userKey));
+        }
     };
 
     table.appendChild(thead).appendChild(tr);
@@ -113,15 +115,7 @@ const sortButtonAttributes = [
     {dataOrder:"asc",src:"../img/both.svg",alt:"both-image"}
 ]
 
-const sortByUsersTableColumn = {
-    "id" : "ID"
-}
-
-const addSortButtons = (userKey,userValue,th) => {
-    for(const value of Object.values(sortByUsersTableColumn)){
-        userValue === value && th.appendChild(createSortButtons(userKey));
-    }
-}
+const sortCategories = ["id"];
 
 const createSortButtons = (columnKey) => {
     const sortButtonsBox = createAttributedElements ({
@@ -172,7 +166,7 @@ const updateTableBody = usersData =>  {
     renderTableBody(usersData);
 };
 
-const sortUsersData = (key, usersData, dataOrder) => {
+const sortUsersData = (category, usersData, dataOrder) => {
     const cloneUsersData = [...usersData];
 
     const sortButtonsFunc = {
@@ -180,11 +174,11 @@ const sortUsersData = (key, usersData, dataOrder) => {
             updateTableBody(usersData);
         },
         "asc" : () => {
-            cloneUsersData.sort((a,b) => a[key] - b[key]);
+            cloneUsersData.sort((a,b) => a[category] - b[category]);
             updateTableBody(cloneUsersData);
         },
         "desc": () => {
-            cloneUsersData.sort((a,b) => b[key] - a[key]);
+            cloneUsersData.sort((a,b) => b[category] - a[category]);
             updateTableBody(cloneUsersData);
         }
     }
@@ -193,9 +187,9 @@ const sortUsersData = (key, usersData, dataOrder) => {
 }
 
 const sortTableBody = usersData => {
-    for(const key of Object.keys(sortByUsersTableColumn)){
-        const sortButtons = [...document.getElementsByClassName(`js-${key}SortButton`)];
-        const sortButtonsBox = document.getElementById(`js-${key}Buttons-Box`);
+    sortCategories.forEach((category) => {
+        const sortButtons = [...document.getElementsByClassName(`js-${category}SortButton`)];
+        const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
         
         let dataOrder;
         sortButtonsBox.addEventListener("click", (e) => {
@@ -207,9 +201,9 @@ const sortTableBody = usersData => {
             }
 
             toggleHiddenClassSortButton(sortButtons,index);
-            sortUsersData(key, usersData, dataOrder);
+            sortUsersData(category, usersData, dataOrder);
         });
-    }
+    });
 } 
 
 initUsersData();
