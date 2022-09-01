@@ -181,7 +181,7 @@ const sortUsersData = (category, usersData, dataOrder) => {
         case "both":
             updateTableBody(usersData);
             break;
-            
+
         default:
     }
 }
@@ -191,10 +191,9 @@ const sortTableBody = usersData => {
         const sortButtons = [...document.getElementsByClassName(`js-${category}SortButton`)];
         const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
         
-        let dataOrder;
         sortButtonsBox.addEventListener("click", (e) => {
             const clickedSortButtonIndex = sortButtons.indexOf(e.target);
-            dataOrder = e.target.getAttribute("data-order");
+            const dataOrder = e.target.getAttribute("data-order");
 
             if(e.currentTarget === e.target){
                 return;
