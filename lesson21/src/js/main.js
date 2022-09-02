@@ -192,12 +192,10 @@ const sortTableBody = usersData => {
         const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
         
         sortButtonsBox.addEventListener("click", (e) => {
+            if(e.currentTarget === e.target) return;
+            
             const clickedSortButtonIndex = sortButtons.indexOf(e.target);
             const currentState = e.target.getAttribute("data-state");
-
-            if(e.currentTarget === e.target){
-                return;
-            }
 
             toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
             sortUsersData(category, usersData, currentState);
