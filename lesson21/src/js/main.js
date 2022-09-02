@@ -110,9 +110,9 @@ const renderTableBody = usersData => {
 }
 
 const sortButtonAttributes = [
-    {dataOrder:"desc",src:"../img/asc.svg", alt:"asc-image"},
-    {dataOrder:"both",src:"../img/desc.svg",alt:"desc-image"},
-    {dataOrder:"asc",src:"../img/both.svg",alt:"both-image"}
+    {state:"asc",src:"../img/asc.svg", alt:"asc-image"},
+    {state:"desc",src:"../img/desc.svg",alt:"desc-image"},
+    {state:"both",src:"../img/both.svg",alt:"both-image"}
 ]
 
 const sortCategories = ["id"];
@@ -133,11 +133,11 @@ const createSortButtons = (columnKey) => {
             tag:"button",
             valuesByAttributes:{
                 class: `js-${columnKey}SortButton`,
-                'data-order':button.dataOrder
+                'data-state':button.state
             }
         });
 
-        button.dataOrder !== "asc" && sortButton.classList.add("hidden");
+        button.state !== "both" && sortButton.classList.add("hidden");
 
         const sortButtonImage = createAttributedElements({
             tag:"img",
@@ -166,10 +166,10 @@ const updateTableBody = usersData =>  {
     renderTableBody(usersData);
 };
 
-const sortUsersData = (category, usersData, dataOrder) => {
+const sortUsersData = (category, usersData, state) => {
     const cloneUsersData = [...usersData];
 
-    switch (dataOrder) {
+    switch (state) {
         case "asc":
             cloneUsersData.sort((a, b) => a[category] - b[category]);
             updateTableBody(cloneUsersData);
@@ -193,14 +193,14 @@ const sortTableBody = usersData => {
         
         sortButtonsBox.addEventListener("click", (e) => {
             const clickedSortButtonIndex = sortButtons.indexOf(e.target);
-            const dataOrder = e.target.getAttribute("data-order");
+            const currentState = e.target.getAttribute("data-state");
 
             if(e.currentTarget === e.target){
                 return;
             }
 
             toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
-            sortUsersData(category, usersData, dataOrder);
+            sortUsersData(category, usersData, currentState);
         });
     });
 } 
