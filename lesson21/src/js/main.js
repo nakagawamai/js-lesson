@@ -186,6 +186,17 @@ const sortUsersData = (category, usersData, state) => {
     }
 }
 
+const getNextState = (currentState) => {
+    switch (currentState) {
+      case "asc":
+        return "desc";
+      case "desc":
+        return "both";
+      default:
+        return "asc";
+    }
+}
+
 const sortTableBody = usersData => {
     sortCategories.forEach((category) => {
         const sortButtons = [...document.getElementsByClassName(`js-${category}SortButton`)];
@@ -193,9 +204,10 @@ const sortTableBody = usersData => {
         
         sortButtonsBox.addEventListener("click", (e) => {
             if(e.currentTarget === e.target) return;
-            
+
             const clickedSortButtonIndex = sortButtons.indexOf(e.target);
             const currentState = e.target.getAttribute("data-state");
+            const nextState = getNextState(currentState);
 
             toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
             sortUsersData(category, usersData, currentState);
