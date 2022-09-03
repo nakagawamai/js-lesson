@@ -155,10 +155,9 @@ const createSortButtons = (columnKey) => {
     return sortButtonsBox;
 }
 
-const toggleHiddenClassSortButton = (sortButtons,index) => {
-    sortButtons[index].classList.add("hidden");
-    (index === sortButtons.length -1) ? index = 0 : index++;
-    sortButtons[index].classList.remove("hidden");
+const toggleHiddenClassForSortButton = (currentButton,nextButton) => {
+    currentButton.classList.add("hidden");
+    nextButton.classList.remove("hidden");
 }
 
 const updateTableBody = usersData =>  {
@@ -199,18 +198,17 @@ const changeState = (currentState) => {
 
 const sortTableBody = usersData => {
     sortCategories.forEach((category) => {
-        const sortButtons = [...document.getElementsByClassName(`js-${category}SortButton`)];
         const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
         
         sortButtonsBox.addEventListener("click", (e) => {
             if(e.currentTarget === e.target) return;
 
-            const clickedSortButtonIndex = sortButtons.indexOf(e.target);
             const currentState = e.target.getAttribute("data-state");
-            const nextState = changeState(currentState);
+            const nextState  = changeState(currentState);
+            const nextButton = document.querySelector(`[data-state=${nextState}]`);
 
-            toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
-            sortUsersData(category, usersData, currentState);
+            toggleHiddenClassForSortButton(e.target,nextButton);
+            sortUsersData(category, usersData, nextState);
         });
     });
 } 
