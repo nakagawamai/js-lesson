@@ -186,7 +186,7 @@ const sortUsersData = (category, usersData, state) => {
     }
 }
 
-const getNextState = (currentState) => {
+const changeState = (currentState) => {
     switch (currentState) {
       case "asc":
         return "desc";
@@ -207,7 +207,7 @@ const sortTableBody = usersData => {
 
             const clickedSortButtonIndex = sortButtons.indexOf(e.target);
             const currentState = e.target.getAttribute("data-state");
-            const nextState = getNextState(currentState);
+            const nextState = changeState(currentState);
 
             toggleHiddenClassSortButton(sortButtons,clickedSortButtonIndex);
             sortUsersData(category, usersData, currentState);
