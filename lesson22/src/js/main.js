@@ -202,12 +202,13 @@ const sortTableBody = usersData => {
 
             const currentState = e.target.getAttribute("data-state");
             const nextState  = changeState(currentState);
-            const nextButton = document.querySelector(`#js-${category}Buttons-Box [data-state=${nextState}]`);
+            const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
 
             toggleHiddenClassForSortButton(e.target,nextButton);
             sortUsersData(category, usersData, nextState);
         });
     });
 } 
+
 
 initUsersData();
