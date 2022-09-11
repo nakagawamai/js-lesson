@@ -115,7 +115,7 @@ const sortButtonAttributes = [
     {state:"both",src:"../img/both.svg",alt:"both-image"}
 ]
 
-const sortCategories = ["id"];
+const sortCategories = ["id", "age"];
 
 const createSortButtons = (columnKey) => {
     const sortButtonsBox = createAttributedElements ({
@@ -202,7 +202,7 @@ const sortTableBody = usersData => {
 
             const currentState = e.target.getAttribute("data-state");
             const nextState  = changeState(currentState);
-            const nextButton = document.querySelector(`[data-state=${nextState}]`);
+            const nextButton = document.querySelector(`#js-${category}Buttons-Box [data-state=${nextState}]`);
 
             toggleHiddenClassForSortButton(e.target,nextButton);
             sortUsersData(category, usersData, nextState);
