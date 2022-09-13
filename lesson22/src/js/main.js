@@ -55,31 +55,43 @@ const renderTableElements = usersData => {
     renderTableBody(usersData);
 }
 
-const usersTableColumn = {
-    "id"     : "ID",
-    "name"   : "名前",
-    "gender" : "性別",
-    "age"    : "年齢"
-}
+const tableColumnConfig = {
+    id: {
+      value: "ID",
+      hasSort: true
+    },
+    name: {
+      value: "名前",
+      hasSort: false
+    },
+    gender: {
+      value: "性別",
+      hasSort: true
+    },
+    age: {
+      value: "年齢",
+      hasSort: false
+    }
+  };
 
 const renderTableHeader = () => {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
 
-    for (const [userKey, userValue] of Object.entries(usersTableColumn)) {
+    for (const [columnKey, columnValue] of Object.entries(tableColumnConfig)) {
         const th = createAttributedElements({
             tag:"th",
             valuesByAttributes:{
                 class:"text-sm text-white px-6 py-4",
             },
-            str:userValue
+            str:columnValue.value
         });
 
         tr.appendChild(th);
 
-        if (sortCategories.includes(userKey)) {
-            th.appendChild(createSortButtons(userKey));
+        if (sortCategories.includes(columnKey)) {
+            th.appendChild(createSortButtons(columnKey));
         }
     };
 
@@ -94,7 +106,7 @@ const renderTableBody = usersData => {
         const fragment = document.createDocumentFragment();
         const tr = document.createElement("tr");
 
-        Object.keys(usersTableColumn).forEach((column) => {
+        Object.keys(tableColumnConfig).forEach((column) => {
             const td = createAttributedElements({
                 tag:"td",
                 valuesByAttributes:{
