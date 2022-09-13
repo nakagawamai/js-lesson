@@ -122,7 +122,7 @@ const createSortButtons = (columnKey) => {
         tag:"div",
         valuesByAttributes:{
             id:`js-${columnKey}Buttons-Box`,
-            class: "w-10 inline-block align-middle"
+            class: "w-10 inline-block align-middle js-sortButtons-Box"
         }
     })
 
@@ -132,7 +132,7 @@ const createSortButtons = (columnKey) => {
         const sortButton = createAttributedElements({
             tag:"button",
             valuesByAttributes:{
-                class: `js-${columnKey}SortButton`,
+                class: `js-sortButtons-Item`,
                 'data-state':button.state
             }
         });
@@ -193,13 +193,33 @@ const changeState = (currentState) => {
     }
 }
 
+const addIsNotClickedForSortButtonsBox = (currentTarget) => {
+    const sortButtons = document.querySelectorAll(".js-sortButtons-Box");
+    for(const button of sortButtons){
+        button.classList.add("is-not-clicked");
+    }
+
+    currentTarget.classList.remove("is-not-clicked");
+}
+
+const resetStatusForSortButton = () => {
+    const sortButtons = document.querySelectorAll(".is-not-clicked > .js-sortButtons-Item");
+    sortButtons.forEach((button) => {
+        const state = button.getAttribute("data-state");
+        (state !== "both") ? button.classList.add("hidden") : button.classList.remove("hidden");
+    });
+}
+
 const sortTableBody = usersData => {
     sortCategories.forEach((category) => {
         const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
-        
+
         sortButtonsBox.addEventListener("click", (e) => {
             if(e.currentTarget === e.target) return;
 
+            addIsNotClickedForSortButtonsBox(e.currentTarget);
+            resetStatusForSortButton();
+            
             const currentState = e.target.getAttribute("data-state");
             const nextState  = changeState(currentState);
             const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
