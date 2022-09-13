@@ -66,11 +66,11 @@ const tableColumnConfig = {
     },
     gender: {
       value: "性別",
-      hasSort: true
+      hasSort: false
     },
     age: {
       value: "年齢",
-      hasSort: false
+      hasSort: true
     }
   };
 
