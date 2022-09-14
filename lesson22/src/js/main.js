@@ -90,7 +90,7 @@ const renderTableHeader = () => {
 
         tr.appendChild(th);
 
-        if (sortCategories.includes(columnKey)) {
+        if (columnValue.hasSort) {
             th.appendChild(createSortButtons(columnKey));
         }
     };
@@ -126,8 +126,6 @@ const sortButtonAttributes = [
     {state:"desc",src:"../img/desc.svg",alt:"desc-image"},
     {state:"both",src:"../img/both.svg",alt:"both-image"}
 ]
-
-const sortCategories = ["id", "age"];
 
 const createSortButtons = (columnKey) => {
     const sortButtonsBox = createAttributedElements ({
@@ -222,9 +220,17 @@ const resetStatusForSortButton = () => {
     });
 }
 
+const filterSortCategories = () =>{
+    const column = Object.entries(tableColumnConfig).map(([key,value])=>({key, value}));
+    const sortCategories = column.filter((a) => a.value.hasSort );
+    return sortCategories;
+}
+
 const sortTableBody = usersData => {
+    const sortCategories = filterSortCategories();
+
     sortCategories.forEach((category) => {
-        const sortButtonsBox = document.getElementById(`js-${category}Buttons-Box`);
+        const sortButtonsBox = document.getElementById(`js-${category.key}Buttons-Box`);
 
         sortButtonsBox.addEventListener("click", (e) => {
             if(e.currentTarget === e.target) return;
@@ -237,7 +243,7 @@ const sortTableBody = usersData => {
             const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
 
             toggleHiddenClassForSortButton(e.target,nextButton);
-            sortUsersData(category, usersData, nextState);
+            sortUsersData(category.key, usersData, nextState);
         });
     });
 } 
