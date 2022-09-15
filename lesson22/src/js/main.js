@@ -42,7 +42,6 @@ const initUsersData = async () => {
             return;
         }
         renderTableElements(usersData);
-        sortTableBody(usersData);
     }catch(error){
         console.error(error);
     }finally{
@@ -51,7 +50,7 @@ const initUsersData = async () => {
 }
 
 const renderTableElements = usersData => {
-    renderTableHeader();
+    renderTableHeader(usersData);
     renderTableBody(usersData);
 }
 
@@ -74,7 +73,7 @@ const tableColumnConfig = {
     }
   };
 
-const renderTableHeader = () => {
+const renderTableHeader = (usersData) => {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
@@ -91,7 +90,7 @@ const renderTableHeader = () => {
         tr.appendChild(th);
 
         if (columnValue.hasSort) {
-            th.appendChild(createSortButtons(columnKey));
+            th.appendChild(createSortButtons(columnKey,usersData));
         }
     };
 
@@ -127,7 +126,7 @@ const sortButtonAttributes = [
     {state:"both",src:"../img/both.svg",alt:"both-image"}
 ]
 
-const createSortButtons = (columnKey) => {
+const createSortButtons = (columnKey,usersData) => {
     const sortButtonsBox = createAttributedElements ({
         tag:"div",
         valuesByAttributes:{
@@ -162,6 +161,8 @@ const createSortButtons = (columnKey) => {
     }
 
     sortButtonsBox.appendChild(fragment);
+    addClickEventToSortTableBody(sortButtonsBox,columnKey,usersData);
+
     return sortButtonsBox;
 }
 
@@ -220,31 +221,19 @@ const resetStatusForSortButton = () => {
     });
 }
 
-const filterSortCategories = () =>{
-    const column = Object.entries(tableColumnConfig).map(([key,value])=>({key, value}));
-    const sortCategories = column.filter((a) => a.value.hasSort );
-    return sortCategories;
-}
+const addClickEventToSortTableBody = (sortButtonsBox,category,usersData)  => {
+    sortButtonsBox.addEventListener("click", (e) => {
+        if(e.currentTarget === e.target) return;
 
-const sortTableBody = usersData => {
-    const sortCategories = filterSortCategories();
+        addIsNotClickedForSortButtonsBox(e.currentTarget);
+        resetStatusForSortButton();
+        
+        const currentState = e.target.getAttribute("data-state");
+        const nextState  = changeState(currentState);
+        const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
 
-    sortCategories.forEach((category) => {
-        const sortButtonsBox = document.getElementById(`js-${category.key}Buttons-Box`);
-
-        sortButtonsBox.addEventListener("click", (e) => {
-            if(e.currentTarget === e.target) return;
-
-            addIsNotClickedForSortButtonsBox(e.currentTarget);
-            resetStatusForSortButton();
-            
-            const currentState = e.target.getAttribute("data-state");
-            const nextState  = changeState(currentState);
-            const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
-
-            toggleHiddenClassForSortButton(e.target,nextButton);
-            sortUsersData(category.key, usersData, nextState);
-        });
+        toggleHiddenClassForSortButton(e.target,nextButton);
+        sortUsersData(category, usersData, nextState);
     });
 } 
 
