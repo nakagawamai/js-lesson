@@ -145,7 +145,7 @@ const createSortButtons = (columnKey) => {
         const sortButton = createAttributedElements({
             tag:"button",
             valuesByAttributes:{
-                class: `js-sortButtons-Item`,
+                class: ``,
                 'data-state':button.state
             }
         });
@@ -218,7 +218,7 @@ const addIsNotClickedForSortButtonsBox = (currentTarget) => {
 }
 
 const resetStatusForSortButton = () => {
-    const sortButtons = document.querySelectorAll(".is-not-clicked > .js-sortButtons-Item");
+    const sortButtons = document.querySelectorAll(".is-not-clicked > .js-sortButtons-item");
     sortButtons.forEach((button) => {
         const state = button.getAttribute("data-state");
         (state !== "both") ? button.classList.add("hidden") : button.classList.remove("hidden");
