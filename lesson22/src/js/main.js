@@ -41,7 +41,8 @@ const initUsersData = async () => {
             renderErrorMessage("No user.",table);
             return;
         }
-        renderTableElements(usersData);
+        tableConfig.usersData = usersData;
+        renderTableElements();
     }catch(error){
         console.error(error);
     }finally{
@@ -49,36 +50,39 @@ const initUsersData = async () => {
     }
 }
 
-const renderTableElements = usersData => {
-    renderTableHeader(usersData);
-    renderTableBody(usersData);
+const renderTableElements = () => {
+    renderTableHeader();
+    renderTableBody(tableConfig.usersData);
 }
 
-const tableColumnConfig = {
-    id: {
-      value: "ID",
-      hasSort: true
+const tableConfig = {
+    column: {
+      id: {
+        value: "ID",
+        hasSort: true
+      },
+      name: {
+        value: "名前",
+        hasSort: false
+      },
+      gender: {
+        value: "性別",
+        hasSort: false
+      },
+      age: {
+        value: "年齢",
+        hasSort: true
+      }
     },
-    name: {
-      value: "名前",
-      hasSort: false
-    },
-    gender: {
-      value: "性別",
-      hasSort: false
-    },
-    age: {
-      value: "年齢",
-      hasSort: true
-    }
-  };
+    usersData: null
+};
 
-const renderTableHeader = (usersData) => {
+const renderTableHeader = () => {
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
     thead.className = "bg-slate-500";
 
-    for (const [columnKey, columnValue] of Object.entries(tableColumnConfig)) {
+    for (const [columnKey, columnValue] of Object.entries(tableConfig.column)) {
         const th = createAttributedElements({
             tag:"th",
             valuesByAttributes:{
@@ -90,7 +94,7 @@ const renderTableHeader = (usersData) => {
         tr.appendChild(th);
 
         if (columnValue.hasSort) {
-            th.appendChild(createSortButtons(columnKey,usersData));
+            th.appendChild(createSortButtons(columnKey));
         }
     };
 
@@ -105,7 +109,7 @@ const renderTableBody = usersData => {
         const fragment = document.createDocumentFragment();
         const tr = document.createElement("tr");
 
-        Object.keys(tableColumnConfig).forEach((column) => {
+        Object.keys(tableConfig.column).forEach((column) => {
             const td = createAttributedElements({
                 tag:"td",
                 valuesByAttributes:{
@@ -126,7 +130,7 @@ const sortButtonAttributes = [
     {state:"both",src:"../img/both.svg",alt:"both-image"}
 ]
 
-const createSortButtons = (columnKey,usersData) => {
+const createSortButtons = (columnKey) => {
     const sortButtonsBox = createAttributedElements ({
         tag:"div",
         valuesByAttributes:{
@@ -161,7 +165,7 @@ const createSortButtons = (columnKey,usersData) => {
     }
 
     sortButtonsBox.appendChild(fragment);
-    addClickEventToSortTableBody(sortButtonsBox,columnKey,usersData);
+    addClickEventToSortTableBody(sortButtonsBox,columnKey);
 
     return sortButtonsBox;
 }
@@ -176,8 +180,8 @@ const updateTableBody = usersData =>  {
     renderTableBody(usersData);
 };
 
-const sortUsersData = (category, usersData, state) => {
-    const cloneUsersData = [...usersData];
+const sortUsersData = (category, state) => {
+    const cloneUsersData = [...tableConfig.usersData];
 
     switch (state) {
         case "asc":
@@ -189,7 +193,7 @@ const sortUsersData = (category, usersData, state) => {
             updateTableBody(cloneUsersData);
             break;
         default:
-            updateTableBody(usersData);
+            updateTableBody(tableConfig.usersData);
     }
 }
 
@@ -221,7 +225,7 @@ const resetStatusForSortButton = () => {
     });
 }
 
-const addClickEventToSortTableBody = (sortButtonsBox,category,usersData)  => {
+const addClickEventToSortTableBody = (sortButtonsBox,category)  => {
     sortButtonsBox.addEventListener("click", (e) => {
         if(e.currentTarget === e.target) return;
 
@@ -233,7 +237,7 @@ const addClickEventToSortTableBody = (sortButtonsBox,category,usersData)  => {
         const nextButton = sortButtonsBox.querySelector(`[data-state=${nextState}]`);
 
         toggleHiddenClassForSortButton(e.target,nextButton);
-        sortUsersData(category, usersData, nextState);
+        sortUsersData(category, nextState);
     });
 } 
 
