@@ -145,7 +145,7 @@ const createSortButtons = (columnKey) => {
         const sortButton = createAttributedElements({
             tag:"button",
             valuesByAttributes:{
-                class: ``,
+                class: `js-sortButtons-item`,
                 'data-state':button.state
             }
         });
