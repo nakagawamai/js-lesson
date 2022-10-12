@@ -1,5 +1,3 @@
-import '../css/style.css'
-
 const showModal = (target)  => {
     target.classList.remove('hidden');
     target.setAttribute('aria-modal', 'true');
