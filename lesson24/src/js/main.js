@@ -40,6 +40,9 @@ agreeButton.addEventListener('click' , () => {
     submitButton.disabled = false;
 });
 
-submitButton.addEventListener ('click', () => window.location.href = "register-done.html");
+submitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "register-done.html";
+});
 
 toggleModal();
