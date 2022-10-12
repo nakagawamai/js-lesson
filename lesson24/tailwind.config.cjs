@@ -70,7 +70,7 @@ module.exports = {
           "@apply sm:w-auto": {},
         },
         '.cancel_text':{
-          "@apply text-white text-sm py-3 underline": {},
+          "@apply text-white text-sm py-3 underline m-auto w-[100px]": {},
           "@apply hover:text-gray-400 hover:cursor-pointer": {},
         },
         '.modal':{
