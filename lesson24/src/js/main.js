@@ -31,7 +31,7 @@ const agreeButton   = document.querySelector('[data-id="agree_button"]');
 const submitButton  = document.querySelector('[data-id="submit_button"]');
 
 agreeCheckBox.addEventListener('change' , () => {
-    agreeCheckBox.checked ? submitButton.disabled = false : submitButton.disabled = true;
+    submitButton.disabled = agreeCheckBox.checked ? false : true;
 });
 
 agreeButton.addEventListener('click' , () => {
