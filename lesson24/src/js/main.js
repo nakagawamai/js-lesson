@@ -15,13 +15,13 @@ const hideModal = (target)  => {
 const toggleModal = () => {
     const modalTarget = document.querySelector('[data-id="popup-modal"]');
     const modalTriggerElements = document.querySelectorAll("[data-modal-toggle]");
-    const modalIsHidden = modalTarget.classList.contains("hidden");
+    const isHiddenModalTarget = modalTarget.classList.contains("hidden");
     
     modalTarget.addEventListener('click',() => hideModal(modalTarget));
     
     modalTriggerElements.forEach((trigger) => {
         trigger.addEventListener('click', () => {
-            modalIsHidden ? showModal(modalTarget) : hideModal(modalTarget);
+            isHiddenModalTarget ? showModal(modalTarget) : hideModal(modalTarget);
         });
     });
 }
