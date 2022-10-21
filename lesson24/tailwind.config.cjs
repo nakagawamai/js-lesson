@@ -69,8 +69,8 @@ module.exports = {
           "@apply disabled:text-white disabled:bg-gray-300 disabled:cursor-not-allowed": {},
           "@apply sm:w-auto": {},
         },
-        '.cancel_text':{
-          "@apply text-white text-sm py-3 underline m-auto w-[100px]": {},
+        '.cancel_button':{
+          "@apply text-gray-700 bg-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 m-auto": {},
           "@apply hover:text-gray-400 hover:cursor-pointer": {},
         },
         '.modal':{
