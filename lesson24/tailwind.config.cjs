@@ -74,7 +74,7 @@ module.exports = {
           "@apply hover:text-gray-400 hover:cursor-pointer": {},
         },
         '.modal':{
-          "@apply overflow-y-auto fixed top-0 right-0 left-0 z-50 inset-0 h-full bg-stone-800/80 flex items-center justify-center": {},
+          "@apply overflow-y-auto fixed top-0 right-0 left-0 z-50 inset-0 h-full bg-stone-800/80 flex flex-col items-center justify-center": {},
         }
       })
     })

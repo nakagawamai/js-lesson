@@ -1,15 +1,11 @@
 const showModal = (target)  => {
     target.classList.remove('hidden');
-    target.setAttribute('aria-modal', 'true');
-    target.setAttribute('role', 'dialog');
-    target.removeAttribute('aria-hidden');
+    target.setAttribute('aria-hidden', 'false');
 }
 
 const hideModal = (target)  => {
     target.classList.add('hidden');
     target.setAttribute('aria-hidden', 'true');
-    target.removeAttribute('aria-modal');
-    target.removeAttribute('role');
 }
 
 const toggleModal = () => {
