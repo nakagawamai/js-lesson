@@ -73,4 +73,20 @@ submitButton.addEventListener("click", (e) => {
     window.location.href = "register-done.html";
 });
 
+const options = {
+    root: document.querySelector('[data-id="modal-inner"]'),
+};
+
+const removeDisabledForAgreeButton = (entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            const agreeButton  = document.querySelector('[data-id="agree_button"]');
+            agreeButton.removeAttribute('disabled');
+        }
+    });
+};
+
+const observer = new IntersectionObserver(removeDisabledForAgreeButton, options);
+observer.observe(document.querySelector('[data-id="last_text"]'));
+
 toggleModal();
