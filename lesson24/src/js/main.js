@@ -78,13 +78,11 @@ const options = {
     threshold: 1
 };
 
-const removeDisabledForAgreeButton = (entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            const agreeButton  = document.querySelector('[data-id="agree_button"]');
-            agreeButton.removeAttribute('disabled');
-        }
-    });
+const removeDisabledForAgreeButton = ([entry]) => {
+    if(entry.isIntersecting){
+        const agreeButton  = document.querySelector('[data-id="agree_button"]');
+        agreeButton.removeAttribute('disabled');
+    }
 };
 
 const observer = new IntersectionObserver(removeDisabledForAgreeButton, options);
