@@ -75,6 +75,7 @@ submitButton.addEventListener("click", (e) => {
 
 const options = {
     root: document.querySelector('[data-id="modal-inner"]'),
+    threshold: 1
 };
 
 const removeDisabledForAgreeButton = (entries) => {
