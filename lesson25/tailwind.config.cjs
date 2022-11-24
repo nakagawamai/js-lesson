@@ -24,7 +24,7 @@ module.exports = {
           "@apply font-body bg-slate-200": {}
         },
         'h1':{
-          "@apply text-xl font-bold mb-6 text-center text-gray-800": {}
+          "@apply text-2xl font-bold mb-6 text-center text-gray-800": {}
         },
         'h2':{
           "@apply text-lg font-normal text-black mb-1": {}
@@ -36,10 +36,10 @@ module.exports = {
           "@apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4": {}
         },
         'label':{
-          "@apply block mb-2 text-sm font-bold text-gray-600": {},
+          "@apply block mb-2 text-base font-bold text-gray-600": {},
         },
         'label[for="agree_check"]':{
-          "@apply ml-2 mb-0 text-sm font-medium text-gray-900": {},
+          "@apply ml-2 mb-0 text-base font-medium text-gray-900": {},
         },
         'input':{
           "@apply block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg":{},

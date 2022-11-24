@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lesson25 会員登録</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
   </head>
   <body>
-    <div class="mx-auto my-20 max-w-xs w-full">
-      <form method="post" id="member_registration">
+    <div class="mx-auto my-20 max-w-md w-full">
+      <form method="post" id="member_registration" name="memberRegister">
         <h1>会員登録</h1>
         <div class="mb-6">
-          <label for="user_name">お名前</label>
+          <label for="user_name">お名前<span class="required text-red-500 mx-1" aria-hidden="true">*</span></label>
           <input type="text" name="name" id="user_name" placeholder="山田　太郎" required>
         </div>
         <div class="mb-6">
-          <label for="email">メールアドレス</label>
+          <label for="email">メールアドレス<span class="required text-red-500 mx-1" aria-hidden="true">*</span></label>
           <input type="email" name="email" id="email" placeholder="sample@sample.com" required>
         </div>
         <div class="mb-6">
-          <label for="password">パスワード</label>
+          <label for="password">パスワード<span class="required text-red-500 mx-1" aria-hidden="true">*</span></label>
           <input type="password" name="password" id="password" placeholder="********" required>
         </div>
         <div class="flex items-center mb-6">
           <input type="checkbox" name="agree_check" id="agree_check" data-id="agree_check" value="agreement" disabled>
-          <label for="agree_check"><a href="#" data-id="terms-link" data-modal-toggle="popup-modal">利用規約</a>を読み、同意しました。</label>
+          <label for="agree_check"><a href="#" data-id="terms-link" data-modal-toggle="popup-modal">利用規約</a>を読み、同意しました</label>
         </div>
         <div class="text-center">
           <button type="submit" name="submit_button" class="submit_btn" data-id="submit_button" disabled>会員登録する</button>
