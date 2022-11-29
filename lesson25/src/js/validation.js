@@ -62,6 +62,5 @@ export const validateForm = (input) => {
 
     if(!validations[input.id].valid(input.value)){
         showErrorMessage(input, validations[input.id].message);
-        return;
     }
 }
