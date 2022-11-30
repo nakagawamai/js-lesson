@@ -5,13 +5,8 @@ const showErrorMessage = (target,message) => {
     errorMessage.classList.add("field-invalid","text-sm","my-2","text-rose-600");
 	errorMessage.textContent = message;
 
-	const error = target.nextElementSibling;
-	if(!error){
+	if(!target.nextElementSibling){
 		target.insertAdjacentElement("afterend",errorMessage);
-	}else{
-		if(!(error.classList.contains("field-invalid"))){
-			target.insertAdjacentElement("afterend",errorMessage);
-		}
 	}
 }
 
