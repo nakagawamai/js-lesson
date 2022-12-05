@@ -1,4 +1,4 @@
-const showErrorMessage = (target,message) => {
+export const showErrorMessage = (target,message) => {
     target.classList.add("border-2","border-red-500");
 
     const errorMessage = document.createElement("p");
@@ -10,7 +10,7 @@ const showErrorMessage = (target,message) => {
 	}
 }
 
-const removeErrorMessage = (target) => {
+export const removeErrorMessage = (target) => {
     target.classList.remove("border-red-500");
 
     const error = target.nextElementSibling;
@@ -19,43 +19,27 @@ const removeErrorMessage = (target) => {
     }
 }
 
-const validations = {
-    user_name: {
-        maxLength: 16,
-        valid(value){
-            return value.length < this.maxLength;
-        },
-        message: "ユーザー名は15文字以下にしてください"
-    },
-    email: {
-        valid(value){
-            //ref https://github.com/Octagon-simon/octaValidate/blob/4c09725647a560bb47eb277a9c32df27831f5202/src/validate.js#L226
-            return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/.test(value);
-        },
-        message: "メールアドレスの形式になっていません"
-    },
-    password: {
-        valid(value) {
-            return /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})+$/.test(value);
-        },
-        message: "8文字以上の大小の英数字を交ぜたものにしてください"
+export const checkRequired = (input) => {
+   if(input.value.trim() === ""){
+        showErrorMessage(input,"入力してください");
+   }
+}
+
+export const checkLength = (labelName,maxLength,input) => {
+    if(input.value.length > maxLength){
+        showErrorMessage(input,`${labelName}}は、${maxLength}文字以内にしてください`)
     }
 }
 
-export const validateForm = (input) => {
-    removeErrorMessage(input);
-
-    if(input.type === "checkbox"){
-        input.checked ? input.classList.remove("field-invalid") : input.classList.add("field-invalid");
-        return;
+export const checkEmail = (input) => {
+    //ref https://github.com/Octagon-simon/octaValidate/blob/4c09725647a560bb47eb277a9c32df27831f5202/src/validate.js#L226
+    if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/.test(input.value))){
+        showErrorMessage(input,"メールアドレスの形式にしてください");
     }
+}
 
-    if(input.value.trim() === ""){
-        showErrorMessage(input, "入力してください");
-        return;
-    }
-
-    if(!validations[input.id].valid(input.value)){
-        showErrorMessage(input, validations[input.id].message);
+export const checkPassword = (input) => {
+    if(!(/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})+$/.test(input.value))){
+        showErrorMessage(input,"8文字以上の大小の英数字を交ぜたものにしてください");
     }
 }

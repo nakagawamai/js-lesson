@@ -1,5 +1,5 @@
 import { toggleModal } from "./modal";
-import { validateForm } from "./validation";
+import * as validation from "./validation";
 
 const agreeCheckBox = document.querySelector('[data-id="agree_check"]');
 const agreeButton   = document.querySelector('[data-id="agree_button"]');
@@ -40,13 +40,28 @@ for (const input of inputSelector){
     input.classList.add("field-invalid");
 
     input.addEventListener("blur", () => {
-        validateForm(input);
+        validation.checkRequired(input);
+
+        input.name === "user_name" && validation.checkLength("ユーザー名",15,input);
+        input.type === "email" && validation.checkEmail(input);
+
         changeDisabledStatusSubmitButton();
     });
 
     input.addEventListener("input" , () => {
         input.classList.remove("field-invalid");
-        validateForm(input);
+        validation.removeErrorMessage(input);
+
+        input.type === "password" && validation.checkPassword(input)
+
+        changeDisabledStatusSubmitButton();
+    });
+
+    input.addEventListener("change",() => {
+        if(input.type === "checkbox"){
+            !input.checked && input.classList.add("field-invalid");
+        }
+
         changeDisabledStatusSubmitButton();
     });
 }
