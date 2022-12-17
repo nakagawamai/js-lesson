@@ -36,30 +36,42 @@ const invalidSelector = document.getElementsByClassName("field-invalid");
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = invalidSelector.length > 0;;
 
 const inputSelector = document.querySelectorAll('input');
+inputSelector[0].focus();
+
 for (const input of inputSelector){
     input.classList.add("field-invalid");
 
     input.addEventListener("blur", () => {
-        validation.checkRequired(input);
+        if(input.hasAttribute("required") && input.value.trim() === ""){
+            validation.showErrorMessage(input,"入力してください");
+        }else{
+            validation.removeErrorMessage(input);
 
-        input.name === "user_name" && validation.checkLength("ユーザー名",15,input);
-        input.type === "email" && validation.checkEmail(input);
-
+            input.type === "email" && validation.checkEmail(input);
+            input.name === "user_name" && validation.checkLength("ユーザー名",15,input);
+            input.type === "password" && validation.checkPassword(input);
+        }
         changeDisabledStatusSubmitButton();
     });
 
     input.addEventListener("input" , () => {
-        input.classList.remove("field-invalid");
-        validation.removeErrorMessage(input);
+        input.name === "user_name" && validation.checkLength("ユーザー名",15,input);
 
-        input.type === "password" && validation.checkPassword(input)
+        if(input.nextElementSibling && input.nextElementSibling.classList.contains("field-invalid")){
+            input.type === "email" && validation.checkEmail(input);
+            input.type === "password" && validation.checkPassword(input);
+        }
+    
+        if(input.hasAttribute("required") && input.value.trim() === ""){
+            validation.showErrorMessage(input,"入力してください");
+        }
 
         changeDisabledStatusSubmitButton();
     });
 
     input.addEventListener("change",() => {
         if(input.type === "checkbox"){
-            !input.checked && input.classList.add("field-invalid");
+            input.checked ? input.classList.remove("field-invalid") : input.classList.add("field-invalid");
         }
 
         changeDisabledStatusSubmitButton();
