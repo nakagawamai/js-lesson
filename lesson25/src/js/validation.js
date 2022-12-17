@@ -21,7 +21,7 @@ export const removeErrorMessage = (target) => {
 
 export const checkLength = (labelName,maxLength,input) => {
     if(input.value.length > maxLength){
-        showErrorMessage(input,`${labelName}}は、${maxLength}文字以内にしてください`)
+        showErrorMessage(input,`${labelName}は、${maxLength}文字以内にしてください`)
     }else{
         removeErrorMessage(input);
     }
