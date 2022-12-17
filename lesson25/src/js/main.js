@@ -24,7 +24,6 @@ const options = {
 
 const removeDisabledForAgreeButton = ([entry]) => {
     if(entry.isIntersecting){
-        const agreeButton  = document.querySelector('[data-id="agree_button"]');
         agreeButton.removeAttribute('disabled');
     }
 };
