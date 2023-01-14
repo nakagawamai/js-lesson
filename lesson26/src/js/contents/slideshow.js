@@ -17,7 +17,7 @@ const counter = {
 }
 
 const autoPlayById = {
-    id:"",
+    id:null,
     start() {
         this.id = setInterval(() => {
             counter.up();
