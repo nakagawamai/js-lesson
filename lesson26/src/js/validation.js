@@ -19,6 +19,8 @@ export const removeErrorMessage = (target) => {
     }
 }
 
+export const isInvalid = () => document.getElementsByClassName("field-invalid").length > 0;
+
 export const checkLength = (labelName,maxLength,input) => {
     if(input.value.length > maxLength){
         showErrorMessage(input,`${labelName}は、${maxLength}文字以内にしてください`)

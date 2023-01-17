@@ -31,8 +31,7 @@ const removeDisabledForAgreeButton = ([entry]) => {
 const observer = new IntersectionObserver(removeDisabledForAgreeButton, options);
 observer.observe(document.querySelector('[data-id="last_text"]'));
 
-const invalidSelector = document.getElementsByClassName("field-invalid");
-const changeDisabledStatusSubmitButton = () => submitButton.disabled = invalidSelector.length > 0;;
+const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
 
 const inputSelector = document.querySelectorAll('input');
 inputSelector[0].focus();
