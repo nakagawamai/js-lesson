@@ -1,5 +1,6 @@
 import { toggleModal } from "./modal";
 import * as validation from "./validation";
+import { togglePassword } from "./module/toggle-password";
 
 const agreeCheckBox = document.querySelector('[data-id="agree_check"]');
 const agreeButton   = document.querySelector('[data-id="agree_button"]');
@@ -47,7 +48,7 @@ for (const input of inputSelector){
 
             input.type === "email" && validation.checkEmail(input);
             input.name === "user_name" && validation.checkLength("ユーザー名",15,input);
-            input.type === "password" && validation.checkPassword(input);
+            input.name === "new-password" && validation.checkPassword(input);
         }
         changeDisabledStatusSubmitButton();
     });
@@ -57,7 +58,7 @@ for (const input of inputSelector){
 
         if(input.nextElementSibling && input.nextElementSibling.classList.contains("field-invalid")){
             input.type === "email" && validation.checkEmail(input);
-            input.type === "password" && validation.checkPassword(input);
+            input.name === "new-password" && validation.checkPassword(input);
         }
     
         if(input.hasAttribute("required") && input.value.trim() === ""){
@@ -77,3 +78,8 @@ for (const input of inputSelector){
 }
 
 toggleModal();
+
+const passwordInput = document.getElementById('new-password');
+const togglePasswordButton = document.getElementById('toggle-password');
+
+togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
