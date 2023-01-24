@@ -49,7 +49,7 @@ module.exports = {
           "@apply text-blue-600 font-bold hover:underline cursor-pointer" : {}
         },
         'form': {
-          "@apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4": {}
+          "@apply bg-white shadow-md rounded px-8 pt-6 pb-8 m-4": {}
         },
         'label':{
           "@apply block mb-2 text-base font-bold text-gray-600": {},

@@ -1,4 +1,5 @@
 import * as validation from "./validation";
+import { togglePassword } from "./module/toggle-password";
 
 const submitButton  = document.querySelector('[data-id="submit_button"]');
 
@@ -19,14 +20,14 @@ for (const input of inputSelector){
         }else{
             validation.removeErrorMessage(input);
 
-            input.type === "password" && validation.checkPassword(input);
+            input.name === "current-password" && validation.checkPassword(input);
         }
         changeDisabledStatusSubmitButton();
     });
 
     input.addEventListener("input" , () => {
         if(input.nextElementSibling && input.nextElementSibling.classList.contains("field-invalid")){
-            input.type === "password" && validation.checkPassword(input);
+            input.name === "current-password" && validation.checkPassword(input);
         }
     
         if(input.hasAttribute("required") && input.value.trim() === ""){
@@ -36,3 +37,8 @@ for (const input of inputSelector){
         changeDisabledStatusSubmitButton();
     });
 }
+
+const passwordInput = document.getElementById('current-password');
+const togglePasswordButton = document.getElementById('js-toggle-password');
+
+togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
