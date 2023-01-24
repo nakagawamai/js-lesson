@@ -80,6 +80,6 @@ for (const input of inputSelector){
 toggleModal();
 
 const passwordInput = document.getElementById('new-password');
-const togglePasswordButton = document.getElementById('toggle-password');
+const togglePasswordButton = document.getElementById('js-toggle-password');
 
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));

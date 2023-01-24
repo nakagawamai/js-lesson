@@ -39,6 +39,6 @@ for (const input of inputSelector){
 }
 
 const passwordInput = document.getElementById('current-password');
-const togglePasswordButton = document.getElementById('toggle-password');
+const togglePasswordButton = document.getElementById('js-toggle-password');
 
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
