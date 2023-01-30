@@ -3,6 +3,7 @@ export const showErrorMessage = (target,message) => {
 
     const errorMessage = document.createElement("p");
     errorMessage.classList.add("field-invalid","text-sm","my-2","text-rose-600");
+    errorMessage.setAttribute("role", "alert");
 	errorMessage.textContent = message;
 
 	if(!target.nextElementSibling){

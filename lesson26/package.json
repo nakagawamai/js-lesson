@@ -15,6 +15,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
+    "chance": "^1.1.9",
     "date-fns": "^2.29.3"
   }
 }
