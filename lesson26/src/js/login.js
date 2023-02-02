@@ -4,11 +4,51 @@ import { Chance } from "chance";
 const chance = new Chance();
 
 const submitButton  = document.querySelector('[data-id="submit_button"]');
+const userNameInput = document.getElementById('username');
+const passwordInput = document.getElementById('current-password');
+const togglePasswordButton = document.getElementById('js-toggle-password');
 
-submitButton.addEventListener("click", async (e) => {
+submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    changeLocation();
+    login();
 });
+
+const isRegisteredUser = (inputValues) => {
+    const userData = {
+        name:"Nakagawa",
+        email: "nakagawa@sample.com",
+        password: "N302aoe3"
+    }
+
+    return ( inputValues.userName === userData.name || userData.email ) && inputValues.password === userData.password;
+}
+
+const checkRegisteredUser = () => {
+    const inputValues = {
+        userName : userNameInput.value,
+        password : passwordInput.value
+    }
+
+    return new Promise((resolve,reject) => {
+        if( isRegisteredUser(inputValues) ){
+            resolve({ token: chance.apple_token(), ok: true , code: 200 })
+        }else{
+            reject({ ok: false, code: 401 })
+        }
+    }) 
+}
+
+const login = async () => {
+    try{
+        const response = await checkRegisteredUser();
+        if(!response) return;
+        localStorage.setItem("token",JSON.stringify(response.token));
+
+        window.location.href = "./index.html";
+    }catch{
+        window.location.href = "./401.html";
+    }
+}
 
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
 
@@ -41,38 +81,4 @@ for (const input of inputSelector){
     });
 }
 
-const userNameInput = document.getElementById('username');
-const passwordInput = document.getElementById('current-password');
-const togglePasswordButton = document.getElementById('js-toggle-password');
-
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
-
-const  isRegisteredUser = () => {
-    const userData = {
-        name:"Nakagawa",
-        email: "nakagawa@sample.com",
-        password: "N302aoe3"
-    }
-
-    return (userNameInput.value === userData.name || userData.email) && passwordInput.value === userData.password;
-}
-
-const login = () => {
-    return new Promise((resolve,reject) => {
-        if(	isRegisteredUser()){
-            resolve({ token: chance.apple_token(), ok: true , code: 200 })
-        }else{
-            reject({ ok: false, code: 401 })
-        }
-    }) 
-}
-
-const changeLocation = async () => {
-    try{
-        const response = await login();
-        localStorage.setItem("token",JSON.stringify(response.token));
-        window.location.href = "./index.html";
-    }catch{
-        window.alert("ログイン権限がありません。");
-    }
-}
