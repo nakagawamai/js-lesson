@@ -10,7 +10,7 @@ const togglePasswordButton = document.getElementById('js-toggle-password');
 
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    login();
+    init();
 });
 
 const isRegisteredUser = (inputValues) => {
@@ -38,17 +38,28 @@ const checkRegisteredUser = () => {
     }) 
 }
 
-const login = async () => {
+const awaitCheckRegisteredUser = async () => {
     try{
         const response = await checkRegisteredUser();
         if(!response) return;
-        localStorage.setItem("token",JSON.stringify(response.token));
-
-        window.location.href = "./index.html";
+        return response.token;
     }catch{
         window.location.href = "./401.html";
     }
 }
+
+const init = async () => {
+    const token = await awaitCheckRegisteredUser();
+    if(!token) return;
+    localStorage.setItem("token",JSON.stringify(token));
+}
+
+const changeLocation = () => {
+    localStorage.getItem("token") ? window.location.href = "./index.html" : window.location.href = "./login.html";
+}
+
+changeLocation();
+
 
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
 
