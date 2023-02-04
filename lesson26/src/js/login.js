@@ -52,6 +52,7 @@ const init = async () => {
     const token = await awaitCheckRegisteredUser();
     if(!token) return;
     localStorage.setItem("token",JSON.stringify(token));
+    window.location.href = "./index.html"
 }
 
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
