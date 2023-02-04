@@ -20,7 +20,7 @@ const isRegisteredUser = (inputValues) => {
         password: "N302aoe3"
     }
 
-    return ( inputValues.userName === userData.name || userData.email ) && inputValues.password === userData.password;
+    return ( inputValues.userName === userData.name || inputValues.userName === userData.email ) && inputValues.password === userData.password;
 }
 
 const checkRegisteredUser = () => {
