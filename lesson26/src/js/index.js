@@ -8,15 +8,6 @@ const endPointURL = {
     newsData   : "https://api.json-generator.com/templates/kuSXIyw7OJla/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0"
 }
 
-const logoutButton = document.querySelector('[data-id="logout"]');
-const logout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "./login.html";
-}
-
-logoutButton.addEventListener("click", logout);
-
-
 const createErrorMessage = (error,element) => {
     const errorMessage = createAttributedElements({tag:"p",valuesByAttributes:{class:"error-message"},str:error});
     element.appendChild(errorMessage);

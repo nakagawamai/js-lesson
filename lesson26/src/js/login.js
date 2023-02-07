@@ -45,7 +45,7 @@ const awaitCheckRegisteredUser = async () => {
     }catch{
         window.location.href = "./401.html";
     }
-}
+};
 
 const init = async () => {
     const token = await awaitCheckRegisteredUser();
