@@ -50,7 +50,7 @@ const login = async () => {
             localStorage.setItem("token", JSON.stringify(response.token));
         }
     }
-};
+}
 
 
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
