@@ -44,11 +44,11 @@ const login = async () => {
       response = await checkRegisteredUser();
     } catch {
       window.location.href = "./401.html";
-    } finally {
-        if (response.token) {
-            window.location.href = "./index.html";
-            localStorage.setItem("token", JSON.stringify(response.token));
-        }
+    }
+    
+    if (response.token) {
+        window.location.href = "./index.html";
+        localStorage.setItem("token", JSON.stringify(response.token));
     }
 }
 
