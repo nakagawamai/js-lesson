@@ -1,11 +1,56 @@
 import * as validation from "./validation";
 import { togglePassword } from "./module/toggle-password";
+import { Chance } from "chance";
+const chance = new Chance();
 
 const submitButton  = document.querySelector('[data-id="submit_button"]');
+const userNameInput = document.getElementById('username');
+const passwordInput = document.getElementById('current-password');
+const togglePasswordButton = document.getElementById('js-toggle-password');
 
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
+    login();
 });
+
+const isRegisteredUser = (inputValues) => {
+    const userData = {
+        name:"Nakagawa",
+        email: "nakagawa@sample.com",
+        password: "N302aoe3"
+    }
+
+    return ( inputValues.userName === userData.name || inputValues.userName === userData.email ) && inputValues.password === userData.password;
+}
+
+const checkRegisteredUser = () => {
+    const inputValues = {
+        userName : userNameInput.value,
+        password : passwordInput.value
+    }
+
+    return new Promise((resolve,reject) => {
+        if( isRegisteredUser(inputValues) ){
+            resolve({ token: chance.guid(), ok: true , code: 200 })
+        }else{
+            reject({ ok: false, code: 401 })
+        }
+    }) 
+}
+
+const login = async () => {
+    let response;
+    try {
+      response = await checkRegisteredUser();
+    } catch {
+      window.location.href = "./401.html";
+    }
+    
+    if (response.token) {
+        window.location.href = "./index.html";
+        localStorage.setItem("token", JSON.stringify(response.token));
+    }
+}
 
 const changeDisabledStatusSubmitButton = () => submitButton.disabled = validation.isInvalid();
 
@@ -37,8 +82,5 @@ for (const input of inputSelector){
         changeDisabledStatusSubmitButton();
     });
 }
-
-const passwordInput = document.getElementById('current-password');
-const togglePasswordButton = document.getElementById('js-toggle-password');
 
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));

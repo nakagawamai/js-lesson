@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css" />
     <script type="module" src="./js/index.js"></script>
     <title>コンテンツページ</title>
+    <script>
+      if(!localStorage.getItem("token")) window.location.href = "./login.html";
+    </script>
   </head>
   <body class="bg-white font-indexBody">
-        <script>
-          window.location.href = "./login.html";
-        </script>
         <h1 class="my-6">News</h1>
         <ul id="js-slider-list" class="slider-list"></ul>
         <ul id="js-topics-list" class="topics-list"></ul>
