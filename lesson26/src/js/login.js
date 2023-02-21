@@ -42,13 +42,15 @@ const login = async () => {
     let response;
     try {
       response = await checkRegisteredUser();
-    } catch {
-      window.location.href = "./401.html";
+    } catch (error) {
+      console.error(error);
     }
     
     if (response.token) {
         window.location.href = "./index.html";
         localStorage.setItem("token", JSON.stringify(response.token));
+    }else{
+        window.location.href = "./401.html";
     }
 }
 
