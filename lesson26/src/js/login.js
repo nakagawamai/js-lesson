@@ -44,6 +44,7 @@ const login = async () => {
       response = await checkRegisteredUser();
     } catch (error) {
       console.error(error);
+      response = error;
     }
     
     if (response.token) {
