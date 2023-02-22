@@ -43,15 +43,15 @@ const login = async () => {
     try {
       response = await checkRegisteredUser();
     } catch (error) {
-      console.error(error);
-      response = error;
+        if(error.code === 401){
+            window.location.href = "./401.html";
+        }
+        console.error(error);
     }
     
     if (response.token) {
         window.location.href = "./index.html";
         localStorage.setItem("token", JSON.stringify(response.token));
-    }else{
-        window.location.href = "./401.html";
     }
 }
 
