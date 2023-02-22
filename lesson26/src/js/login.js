@@ -50,8 +50,8 @@ const login = async () => {
     }
     
     if (response.token) {
-        window.location.href = "./index.html";
         localStorage.setItem("token", JSON.stringify(response.token));
+        window.location.href = "./index.html";
     }
 }
 
