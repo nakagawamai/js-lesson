@@ -49,7 +49,7 @@ const login = async () => {
         console.error(error);
     }
     
-    if (response.token) {
+    if (response?.token) {
         localStorage.setItem("token", JSON.stringify(response.token));
         window.location.href = "./index.html";
     }
