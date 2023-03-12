@@ -90,6 +90,13 @@ for (const input of inputSelector){
 
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
 
+togglePasswordButton.addEventListener('blur', (event) => {
+    if(isRelatedTarget(event,"current-password")) return;
+
+    validation.checkPassword(passwordInput);
+    changeDisabledStatusSubmitButton();
+});
+
 const isRelatedTarget = (event,target) => {
     const related = event.relatedTarget ? event.relatedTarget.id : "unknown";
     return related === target;
