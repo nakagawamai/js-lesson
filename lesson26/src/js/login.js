@@ -88,7 +88,10 @@ for (const input of inputSelector){
     });
 }
 
-togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
+togglePasswordButton.addEventListener('click', () => {
+    validation.removeErrorMessage(passwordInput);
+    togglePassword(passwordInput,togglePasswordButton);
+});
 
 togglePasswordButton.addEventListener('blur', (event) => {
     if(isRelatedTarget(event,"current-password")) return;
