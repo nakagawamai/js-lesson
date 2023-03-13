@@ -84,10 +84,7 @@ toggleModal();
 const passwordInput = document.getElementById('new-password');
 const togglePasswordButton = document.getElementById('js-toggle-password');
 
-togglePasswordButton.addEventListener('click', () => {
-    validation.removeErrorMessage(passwordInput);
-    togglePassword(passwordInput,togglePasswordButton);
-});
+togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
 
 togglePasswordButton.addEventListener('blur', (event) => {
     if(isRelatedTarget(event,"new-password")) return;
