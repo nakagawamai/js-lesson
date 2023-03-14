@@ -89,6 +89,7 @@ togglePasswordButton.addEventListener('click', () => togglePassword(passwordInpu
 togglePasswordButton.addEventListener('blur', (event) => {
     if(isRelatedTarget(event,"new-password")) return;
 
+    validation.removeErrorMessage(passwordInput);
     validation.checkPassword(passwordInput);
     changeDisabledStatusSubmitButton();
 });
