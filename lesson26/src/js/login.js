@@ -62,7 +62,9 @@ const inputSelector = document.querySelectorAll('input');
 for (const input of inputSelector){
     input.classList.add("field-invalid");
 
-    input.addEventListener("blur", () => {
+    input.addEventListener("blur", (event) => {
+        if(isRelatedTarget(event,"js-toggle-password")) return;
+
         if(input.hasAttribute("required") && input.value.trim() === ""){
             validation.showErrorMessage(input,"入力してください");
         }else{
@@ -87,3 +89,16 @@ for (const input of inputSelector){
 }
 
 togglePasswordButton.addEventListener('click', () => togglePassword(passwordInput,togglePasswordButton));
+
+togglePasswordButton.addEventListener('blur', (event) => {
+    if(isRelatedTarget(event,"current-password")) return;
+    
+    validation.removeErrorMessage(passwordInput);
+    validation.checkPassword(passwordInput);
+    changeDisabledStatusSubmitButton();
+});
+
+const isRelatedTarget = (event,target) => {
+    const related = event.relatedTarget ? event.relatedTarget.id : "unknown";
+    return related === target;
+}
