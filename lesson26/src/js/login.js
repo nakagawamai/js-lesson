@@ -3,6 +3,8 @@ import { togglePassword } from "./module/toggle-password";
 import { Chance } from "chance";
 const chance = new Chance();
 
+if(localStorage.getItem("token")) window.location.href = "./index.html";
+
 const submitButton  = document.querySelector('[data-id="submit_button"]');
 const userNameInput = document.getElementById('username');
 const passwordInput = document.getElementById('current-password');
