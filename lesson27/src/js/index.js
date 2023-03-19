@@ -3,6 +3,8 @@ import * as loading from "./module/loading";
 import * as slide from "./contents/slideshow";
 import * as tab from "./contents/tab";
 
+if(!localStorage.getItem("token")) window.location.href = "./login.html";
+
 const logout = () =>  {
     if(localStorage.getItem('token')){
         localStorage.removeItem('token');
