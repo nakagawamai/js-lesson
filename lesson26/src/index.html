@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css" />
     <script type="module" src="./js/index.js"></script>
     <title>コンテンツページ</title>
+    <script>
+      if(!localStorage.getItem("token")) window.location.href = "./login.html";
+    </script>
   </head>
   <body class="bg-white font-indexBody">
     <header class="text-right bg-gradient-to-r from-blue-600 to-blue-700">
