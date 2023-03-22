@@ -6,7 +6,7 @@ import * as tab from "./contents/tab";
 const logout = () =>  {
     if(localStorage.getItem('token')){
         localStorage.removeItem('token');
-        location.href = "./login.html";
+        window.location.href = "./login.html";
     }
 }
 
