@@ -6,15 +6,15 @@ import * as tab from "./contents/tab";
 const logout = () =>  {
     if(localStorage.getItem('token')){
         localStorage.removeItem('token');
-        location.href = "./login.html";
+        window.location.href = "./login.html";
     }
 }
 
 document.querySelector('[data-id="logout-button"]').addEventListener("click", logout);
 
 const endPointURL = {
-    sliderData : "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0",
-    newsData   : "https://api.json-generator.com/templates/kuSXIyw7OJla/data?access_token=hu4bc7qh9znx2m8f53mn4mz2hryvdntkavwbw8j0"
+    sliderData : "https://api.json-generator.com/templates/szdgGQcOLXuk/data?access_token=ldellyt6vtmrxeee86my9owfhoybjp2uk86qa33b",
+    newsData   : "https://api.json-generator.com/templates/kuSXIyw7OJla/data?access_token=ldellyt6vtmrxeee86my9owfhoybjp2uk86qa33b"
 }
 
 const createErrorMessage = (error,element) => {
