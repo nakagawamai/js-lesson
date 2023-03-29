@@ -15,6 +15,7 @@ agreeButton.addEventListener('click' , () => {
 
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
+    saveUserData();
     window.location.href = "register-done.html";
 });
 
@@ -97,4 +98,18 @@ togglePasswordButton.addEventListener('blur', (event) => {
 const isRelatedTarget = (event,target) => {
     const related = event.relatedTarget ? event.relatedTarget.id : "unknown";
     return related === target;
+}
+
+const saveUserData = () => {
+    const userName = document.querySelector('[data-id="user_name"]');
+    const email = document.querySelector('[data-id="email"]');
+    const password = document.querySelector('[data-id="new-password"]');
+
+    const userData = {
+        name: userName.value,
+        email: email.value,
+        password : password.value,
+    }
+
+    window.localStorage.setItem("userData", JSON.stringify(userData));
 }
