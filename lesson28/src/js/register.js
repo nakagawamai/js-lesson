@@ -101,9 +101,9 @@ const isRelatedTarget = (event,target) => {
 }
 
 const saveUserData = () => {
-    const userName = document.querySelector('[data-id="user_name"]');
+    const userName = document.querySelector('[data-id="userName"]');
     const email = document.querySelector('[data-id="email"]');
-    const password = document.querySelector('[data-id="new-password"]');
+    const password = document.querySelector('[data-id="password"]');
 
     const userData = {
         name: userName.value,
