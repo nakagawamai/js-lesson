@@ -16,7 +16,6 @@ agreeButton.addEventListener('click' , () => {
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     saveUserData();
-    window.location.href = "register-done.html";
 });
 
 const options = {
@@ -112,4 +111,5 @@ const saveUserData = () => {
     }
 
     window.localStorage.setItem("userData", JSON.stringify(userData));
+    window.location.href = "register-done.html";
 }
