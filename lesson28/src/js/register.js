@@ -113,13 +113,13 @@ const saveUserData = () => {
     if( isRegisteredEmail(email) ){
         validation.showErrorMessage(email,"登録済みのメールアドレスです");
     }else{
-        window.localStorage.setItem("userData", JSON.stringify(userData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         window.location.href = "register-done.html";
     }
 }
 
 const isRegisteredEmail = (email) => {
-    const userData = JSON.parse(window.localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData"));
     const registeredEmail = userData?.email;
 
     return registeredEmail === email.value;
