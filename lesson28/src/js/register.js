@@ -110,7 +110,7 @@ const saveUserData = () => {
         password : password.value,
     }
 
-    if( isRegisteredEmail(email) ){
+    if( isRegisteredEmail(email.value) ){
         validation.showErrorMessage(email,"登録済みのメールアドレスです");
     }else{
         localStorage.setItem("userData", JSON.stringify(userData));
@@ -118,9 +118,9 @@ const saveUserData = () => {
     }
 }
 
-const isRegisteredEmail = (email) => {
+const isRegisteredEmail = (emailValue) => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     const registeredEmail = userData?.email;
 
-    return registeredEmail === email.value;
+    return registeredEmail === emailValue;
 }
