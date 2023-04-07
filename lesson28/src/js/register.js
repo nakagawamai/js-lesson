@@ -26,6 +26,7 @@ const options = {
 const removeDisabledForAgreeButton = ([entry]) => {
     if(entry.isIntersecting){
         agreeButton.removeAttribute('disabled');
+        agreeButton.focus();
     }
 };
 
