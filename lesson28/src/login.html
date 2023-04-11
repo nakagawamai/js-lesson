@@ -16,19 +16,19 @@
           <h1>ログイン</h1>
           <div class="mb-6">
             <label for="username">お名前 / メールアドレス<span class="required text-red-500 mx-1" aria-hidden="true">*</span></label>
-            <input type="text" name="username" id="username" autocomplete="username" placeholder="山田　太郎 / sample@sample.com" required>
+            <input tabindex="1" type="text" name="username" id="username" autocomplete="username" placeholder="山田　太郎 / sample@sample.com" required>
           </div>
           <div class="mb-6 relative">
             <label for="confirm-password">パスワード<span class="required text-red-500 mx-1" aria-hidden="true">*</span></label>
-            <button id="js-toggle-password" type="button" class="absolute cursor-pointer py-1 h-[42px] px-2 top-[32px] right-0 text-[16px] rounded-sm font-bold text-blue-500" aria-label="パスワードを表示">表示</button>
-            <input type="password" name="current-password" id="current-password" autocomplete="current-password" placeholder="********" aria-describedby="password-constraints" required>
+            <button tabindex="3" id="js-toggle-password" type="button" class="absolute cursor-pointer py-1 h-[42px] px-2 top-[32px] right-0 text-[16px] rounded-sm font-bold text-blue-500" aria-label="パスワードを表示">表示</button>
+            <input tabindex="2" type="password" name="current-password" id="current-password" autocomplete="current-password" placeholder="********" aria-describedby="password-constraints" required>
           </div>
           <div class="text-center mb-10">
-            <button type="submit" name="submit_button" class="submit_btn" data-id="submit_button" disabled>ログイン</button>
+            <button tabindex="4" type="submit" name="submit_button" class="submit_btn" data-id="submit_button" disabled>ログイン</button>
           </div>
           <div>
-            <a href="forgotpassword.html"><p class="mb-1">パスワードをお忘れの方はこちら</p></a>
-            <a href="register.html"><p class="mb-1">会員登録がまだの方はこちら</p></a>
+            <a tabindex="5" href="forgotpassword.html"><p class="mb-1">パスワードをお忘れの方はこちら</p></a>
+            <a tabindex="6" href="register.html"><p class="mb-1">会員登録がまだの方はこちら</p></a>
           </div>
         </form>
       </div>

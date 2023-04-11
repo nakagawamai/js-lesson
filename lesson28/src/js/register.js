@@ -16,7 +16,6 @@ agreeButton.addEventListener('click' , () => {
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     saveUserData();
-    window.location.href = "register-done.html";
 });
 
 const options = {
@@ -27,6 +26,7 @@ const options = {
 const removeDisabledForAgreeButton = ([entry]) => {
     if(entry.isIntersecting){
         agreeButton.removeAttribute('disabled');
+        agreeButton.focus();
     }
 };
 
@@ -111,5 +111,17 @@ const saveUserData = () => {
         password : password.value,
     }
 
-    window.localStorage.setItem("userData", JSON.stringify(userData));
+    if( isRegisteredEmail(email.value) ){
+        validation.showErrorMessage(email,"登録済みのメールアドレスです");
+    }else{
+        localStorage.setItem("userData", JSON.stringify(userData));
+        window.location.href = "register-done.html";
+    }
+}
+
+const isRegisteredEmail = (emailValue) => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const registeredEmail = userData?.email;
+
+    return registeredEmail === emailValue;
 }
