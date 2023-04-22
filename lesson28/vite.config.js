@@ -5,4 +5,7 @@ export default defineConfig({
         base: './', 
         outDir: '../dist',
     },
+    server: {
+        port: 3000
+    }
 });

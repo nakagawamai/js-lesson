@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test-view": "npx playwright codegen http://localhost:3000/register.html",
+    "test": "npx playwright test ./src/tests/register.spec.js"
   },
   "devDependencies": {
+    "@playwright/test": "^1.32.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6",
