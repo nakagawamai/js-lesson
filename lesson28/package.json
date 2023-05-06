@@ -8,7 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "test-view": "npx playwright codegen http://localhost:3000/register.html",
-    "test": "npx playwright test ./src/tests/register.spec.js"
+    "test": "npx playwright test ./src/tests/register.spec.js",
+    "test-login": "npx playwright test ./src/tests/login.spec.js",
+    "test-password": "npx playwright test ./src/tests/forgot-password.spec.js",
+    "e2e:all": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
