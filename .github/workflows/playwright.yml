@@ -1,9 +1,10 @@
 name: Playwright Tests
 on: [push]
-jobs:
-  defaults:
+defaults:
   run:
+    shell: bash
     working-directory: lesson28
+jobs:
  test:
    timeout-minutes: 60
    runs-on: ubuntu-latest
